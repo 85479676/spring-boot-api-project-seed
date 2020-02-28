@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LegUserGroupDomainMapMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LegUserGroupDomainMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="USER_GROUP_UNID" jdbcType="VARCHAR" property="userGroupUnid" />
+    <id column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

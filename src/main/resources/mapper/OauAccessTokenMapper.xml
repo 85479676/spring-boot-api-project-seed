@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.OauAccessTokenMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.OauAccessToken">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="AIID" jdbcType="BIGINT" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_UNIX" jdbcType="BIGINT" property="datimeUnix" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+    <result column="OPEN_ID" jdbcType="CHAR" property="openId" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="OAUTH_CLIENT_ID" jdbcType="BIGINT" property="oauthClientId" />
+    <result column="EXPIRES_IN" jdbcType="INTEGER" property="expiresIn" />
+    <result column="TOKEN_TYPE" jdbcType="VARCHAR" property="tokenType" />
+    <result column="REFRESH_TOKEN" jdbcType="VARCHAR" property="refreshToken" />
+    <result column="AUTH_CODE" jdbcType="VARCHAR" property="authCode" />
+    <result column="ATTA" jdbcType="VARCHAR" property="atta" />
+    <result column="IP4" jdbcType="VARCHAR" property="ip4" />
+    <result column="IP6" jdbcType="VARCHAR" property="ip6" />
+    <result column="FLAG_EXPIRED" jdbcType="BIT" property="flagExpired" />
+    <result column="FLAG_AVA" jdbcType="BIT" property="flagAva" />
+  </resultMap>
+</mapper>

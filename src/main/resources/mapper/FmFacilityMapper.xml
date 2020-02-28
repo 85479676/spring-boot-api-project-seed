@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmFacilityMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.FmFacility">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ID_SYSTEM" jdbcType="SMALLINT" property="idSystem" />
+    <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="UNID_CELL" jdbcType="CHAR" property="unidCell" />
+    <result column="UNID_GROUP" jdbcType="CHAR" property="unidGroup" />
+    <result column="UNID_MOUNT" jdbcType="CHAR" property="unidMount" />
+    <result column="UNID_BUSINESS_UNIT" jdbcType="CHAR" property="unidBusinessUnit" />
+    <result column="ID_HOST" jdbcType="VARCHAR" property="idHost" />
+    <result column="ID_CHANNEL" jdbcType="VARCHAR" property="idChannel" />
+    <result column="ID_ZONE" jdbcType="VARCHAR" property="idZone" />
+    <result column="ID_SLOT" jdbcType="VARCHAR" property="idSlot" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="DATIME_LAST_CHECK" jdbcType="TIMESTAMP" property="datimeLastCheck" />
+    <result column="DATIME_LAST_MTN" jdbcType="TIMESTAMP" property="datimeLastMtn" />
+    <result column="COUNT_EVENT" jdbcType="INTEGER" property="countEvent" />
+    <result column="BITS" jdbcType="BIT" property="bits" />
+    <result column="FLAG_AVA" jdbcType="BIT" property="flagAva" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

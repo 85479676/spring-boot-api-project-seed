@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.SysMenuViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.SysMenuView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="INX" jdbcType="INTEGER" property="inx" />
+    <result column="UNID_SUPER" jdbcType="CHAR" property="unidSuper" />
+    <result column="PRIV_UNID" jdbcType="CHAR" property="privUnid" />
+    <result column="ID_TYPE" jdbcType="INTEGER" property="idType" />
+    <result column="TAG" jdbcType="VARCHAR" property="tag" />
+    <result column="AVATAR" jdbcType="VARCHAR" property="avatar" />
+    <result column="ATTA" jdbcType="VARCHAR" property="atta" />
+    <result column="ICON_URI" jdbcType="VARCHAR" property="iconUri" />
+    <result column="REDIRECT_URI" jdbcType="VARCHAR" property="redirectUri" />
+    <result column="FLAG_CACHE" jdbcType="BIT" property="flagCache" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+  </resultMap>
+</mapper>

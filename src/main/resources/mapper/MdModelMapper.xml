@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.MdModelMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.MdModel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="UNID_VENDOR" jdbcType="CHAR" property="unidVendor" />
+    <result column="UNID_PROTO" jdbcType="CHAR" property="unidProto" />
+    <result column="TAG" jdbcType="CHAR" property="tag" />
+    <result column="FLAG_PRIV" jdbcType="BIT" property="flagPriv" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

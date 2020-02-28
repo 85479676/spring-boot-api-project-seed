@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.BsNotificationLogMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.BsNotificationLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="UNID" jdbcType="VARCHAR" property="unid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="INFORME" jdbcType="VARCHAR" property="informe" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="FM_FACILITY_UNID" jdbcType="VARCHAR" property="fmFacilityUnid" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="TYPE" jdbcType="INTEGER" property="type" />
+    <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
+  </resultMap>
+</mapper>

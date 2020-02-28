@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LegUserGroupPrivilegeMapViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LegUserGroupPrivilegeMapView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="USER_GROUP_USER" jdbcType="VARCHAR" property="userGroupUser" />
+    <result column="PRIVILEGE_UNID" jdbcType="VARCHAR" property="privilegeUnid" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="GROUP_NAME" jdbcType="VARCHAR" property="groupName" />
+    <result column="PRIVILE_NAME" jdbcType="VARCHAR" property="privileName" />
+  </resultMap>
+</mapper>

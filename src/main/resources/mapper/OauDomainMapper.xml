@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.OauDomainMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.OauDomain">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="AIID" jdbcType="BIGINT" property="aiid"/>
+        <result column="UNID" jdbcType="CHAR" property="unid"/>
+        <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys"/>
+        <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="ID_TYPE" jdbcType="INTEGER" property="idType"/>
+        <result column="ID_TREE" jdbcType="TINYINT" property="idTree"/>
+        <result column="ID_TENANT" jdbcType="INTEGER" property="idTenant"/>
+        <result column="INX" jdbcType="SMALLINT" property="inx"/>
+        <result column="CAPA" jdbcType="INTEGER" property="capa"/>
+        <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx"/>
+        <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx"/>
+        <result column="UNID_SUPER" jdbcType="CHAR" property="unidSuper"/>
+        <result column="UNID_TREE_A" jdbcType="CHAR" property="unidTreeA"/>
+        <result column="UNID_CIRCLE" jdbcType="CHAR" property="unidCircle"/>
+        <result column="URL" jdbcType="VARCHAR" property="url"/>
+        <result column="FLAG_AVA" jdbcType="BIT" property="flagAva"/>
+        <result column="FLAG_TENANT" jdbcType="BIT" property="flagTenant"/>
+        <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
+    </resultMap>
+    <select id="selectGetName" resultType="com.company.project.model.OauDomain" resultMap="BaseResultMap">
+        SELECT `UNID`,  `NAME`, `ID_TYPE`,`FLAG_DEL` FROM OAU_DOMAIN WHERE  NAME=#{name}
+    </select>
+</mapper>

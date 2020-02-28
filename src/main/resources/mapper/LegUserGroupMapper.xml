@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LegUserGroupMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.LegUserGroup">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="UNID" jdbcType="VARCHAR" property="unid"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys"/>
+        <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod"/>
+        <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid"/>
+        <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
+    </resultMap>
+
+    <select id="selectGetName" resultType="com.company.project.model.LegUserGroup" resultMap="BaseResultMap">
+        select * from LEG_USER_GROUP  where NAME=#{name}
+    </select>
+
+</mapper>

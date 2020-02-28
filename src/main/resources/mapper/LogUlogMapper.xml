@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LogUlogMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LogUlog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="AIID" jdbcType="BIGINT" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="URL" jdbcType="CHAR" property="url" />
+    <result column="LOCATION" jdbcType="CHAR" property="location" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

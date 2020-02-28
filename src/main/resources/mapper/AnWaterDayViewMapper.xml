@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.AnWaterDayViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.AnWaterDayView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="UNID" jdbcType="VARCHAR" property="unid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="MAX" jdbcType="DOUBLE" property="max" />
+    <result column="MIN" jdbcType="DOUBLE" property="min" />
+    <result column="AVE" jdbcType="DOUBLE" property="ave" />
+    <result column="TYPE" jdbcType="BIT" property="type" />
+    <result column="ALARMCOUNT" jdbcType="SMALLINT" property="alarmcount" />
+    <result column="SYSTEM_DATIME" jdbcType="TIMESTAMP" property="systemDatime" />
+    <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+  </resultMap>
+</mapper>

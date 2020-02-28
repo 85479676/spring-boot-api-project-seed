@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LogTupleSensorViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LogTupleSensorView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="BIGINT" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="MILLI_EPOCH" jdbcType="BIGINT" property="milliEpoch" />
+    <result column="AIID_ENTITY" jdbcType="INTEGER" property="aiidEntity" />
+    <result column="ID_CHANNEL" jdbcType="SMALLINT" property="idChannel" />
+    <result column="ID_HOST" jdbcType="VARCHAR" property="idHost" />
+    <result column="T0" jdbcType="DECIMAL" property="t0" />
+    <result column="T1" jdbcType="DECIMAL" property="t1" />
+    <result column="T2" jdbcType="DECIMAL" property="t2" />
+    <result column="T3" jdbcType="DECIMAL" property="t3" />
+    <result column="T4" jdbcType="DECIMAL" property="t4" />
+    <result column="T5" jdbcType="DECIMAL" property="t5" />
+    <result column="T6" jdbcType="DECIMAL" property="t6" />
+    <result column="T7" jdbcType="DECIMAL" property="t7" />
+    <result column="T8" jdbcType="DECIMAL" property="t8" />
+    <result column="T9" jdbcType="DECIMAL" property="t9" />
+    <result column="FACILITY_NAME" jdbcType="VARCHAR" property="facilityName" />
+  </resultMap>
+</mapper>

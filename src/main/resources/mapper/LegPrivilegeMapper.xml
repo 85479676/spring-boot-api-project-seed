@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LegPrivilegeMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LegPrivilege">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="UNID" jdbcType="VARCHAR" property="unid" />
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="INX" jdbcType="INTEGER" property="inx" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

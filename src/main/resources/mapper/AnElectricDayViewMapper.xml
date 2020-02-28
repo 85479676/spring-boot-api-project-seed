@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.AnElectricDayViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.AnElectricDayView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="UNID" jdbcType="VARCHAR" property="unid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ELEC_A_MAX" jdbcType="DOUBLE" property="elecAMax" />
+    <result column="ELEC_A_MIN" jdbcType="DOUBLE" property="elecAMin" />
+    <result column="ELEC_A_AVE" jdbcType="DOUBLE" property="elecAAve" />
+    <result column="TEML_MAX" jdbcType="DOUBLE" property="temlMax" />
+    <result column="TEML_MIN" jdbcType="DOUBLE" property="temlMin" />
+    <result column="TEML_AVE" jdbcType="DOUBLE" property="temlAve" />
+    <result column="TEM2_MAX" jdbcType="DOUBLE" property="tem2Max" />
+    <result column="TEM2_MIN" jdbcType="DOUBLE" property="tem2Min" />
+    <result column="TEM2_AVE" jdbcType="DOUBLE" property="tem2Ave" />
+    <result column="TEM3_MAX" jdbcType="DOUBLE" property="tem3Max" />
+    <result column="TEM3_MIN" jdbcType="DOUBLE" property="tem3Min" />
+    <result column="TEM3_AVE" jdbcType="DOUBLE" property="tem3Ave" />
+    <result column="TEM4_MAX" jdbcType="DOUBLE" property="tem4Max" />
+    <result column="TEM4_MIN" jdbcType="DOUBLE" property="tem4Min" />
+    <result column="TEM4_AVE" jdbcType="DOUBLE" property="tem4Ave" />
+    <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="SYSTEM_DATIME" jdbcType="TIMESTAMP" property="systemDatime" />
+    <result column="ELEC_V_MAX" jdbcType="DOUBLE" property="elecVMax" />
+    <result column="ELEC_V_MIN" jdbcType="DOUBLE" property="elecVMin" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+  </resultMap>
+</mapper>
