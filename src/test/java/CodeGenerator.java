@@ -243,9 +243,9 @@ import static com.company.project.core.ProjectConstant.*;
  */
 public class CodeGenerator {
        // JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://101.133.136.114:3306/terata?useUnicode=true&characterEncoding=utf-8&useSSL=true";
+    private static final String JDBC_URL = "jdbc:mysql://101.133.136.114:13306/terata?useUnicode=true&characterEncoding=utf-8&useSSL=true";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "123456";
+    private static final String JDBC_PASSWORD = "12345466";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 //      sensor库
 //    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sensor?useUnicode=true&characterEncoding=utf-8&useSSL=true";
@@ -274,7 +274,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         //genCode("alarm_view");
-        genCode("BS_NOTIFICATION_LOG_VIEW");
+        genCode("FM_UPLOAD_FILE_VIEW");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
 
