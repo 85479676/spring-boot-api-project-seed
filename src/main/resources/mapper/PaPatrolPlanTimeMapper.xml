@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PaPatrolPlanTimeMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.PaPatrolPlanTime">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="pa_plan_date_unid" jdbcType="VARCHAR" property="paPlanDateUnid"/>
+        <result column="pa_plan_unid" jdbcType="VARCHAR" property="paPlanUnid"/>
+        <result column="start" jdbcType="TIME" property="start"/>
+        <result column="end" jdbcType="TIME" property="end"/>
+        <result column="flag_del" jdbcType="BIT" property="flagDel"/>
+        <result column="unid" jdbcType="VARCHAR" property="unid"/>
+    </resultMap>
+</mapper>

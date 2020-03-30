@@ -1,16 +1,18 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.model.LegOpenIdPrivilegeMap;
 import com.company.project.model.LegOpenidPrivilegeView;
 import com.company.project.service.LegOpenidPrivilegeViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/openidprivilegeview")
-public class LegOpenidPrivilegeViewController {
+public class LegOpenidPrivilegeViewController extends DomainedResource {
     @Resource
     private LegOpenidPrivilegeViewService legOpenidPrivilegeViewService;
 
@@ -48,13 +50,16 @@ public class LegOpenidPrivilegeViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String unid) {
+    public Result list(HttpServletRequest request, @RequestParam(required = false) String domainUnid, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String unid) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegOpenidPrivilegeView> list = null;
         Condition condition = new Condition(LegOpenidPrivilegeView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (unid != null) {
-            condition.createCriteria().andCondition("OPEN_ID='" + unid + "'");
+            cr.andCondition("OPEN_ID='" + unid + "'");
         }
+        cr.andCondition(temp);
         list = legOpenidPrivilegeViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

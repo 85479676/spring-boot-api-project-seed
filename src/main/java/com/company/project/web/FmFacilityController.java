@@ -22,7 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/facility")
 public class FmFacilityController {
-//    @Resource
+    //    @Resource
 //    private JedisPool jedisPool;
     @Resource
     private FmFacilityService fmFacilityService;
@@ -57,11 +57,7 @@ public class FmFacilityController {
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
-//        Jedis jedis = jedisPool.getResource();
-
-
         List<FmFacility> list = fmFacilityService.findAll();
-//        jedis.append("name", list.toString());
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }

@@ -1,16 +1,18 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegUserGroupView;
-import com.company.project.model.MdModelView;
 import com.company.project.service.LegUserGroupViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/usergroupview")
-public class LegUserGroupViewController {
+public class LegUserGroupViewController extends DomainedResource {
     @Resource
     private LegUserGroupViewService legUserGroupViewService;
 
@@ -48,15 +50,18 @@ public class LegUserGroupViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String name) {
+    public Result list(HttpServletRequest request, @RequestParam(required = false) String domainUnid, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String name) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegUserGroupView> list = null;
 
         Condition condition = new Condition(LegUserGroupView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
+        cr.andCondition(temp);
         list = legUserGroupViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

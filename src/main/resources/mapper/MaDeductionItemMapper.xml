@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.MaDeductionItemMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.MaDeductionItem">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="unid" jdbcType="VARCHAR" property="unid"/>
+        <result column="facility_unid" jdbcType="VARCHAR" property="facilityUnid"/>
+        <result column="event_type" jdbcType="VARCHAR" property="eventType"/>
+        <result column="domain_unid" jdbcType="VARCHAR" property="domainUnid"/>
+        <result column="mark_type_unid" jdbcType="VARCHAR" property="markTypeUnid"/>
+        <result column="mark_value" jdbcType="DOUBLE" property="markValue"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime"/>
+        <result column="message_source" jdbcType="INTEGER" property="messageSource"/>
+    </resultMap>
+    <resultMap id="BaseResultMapp" type="com.company.project.model.MaDeductionItems">
+        <result column="mark_value" jdbcType="DOUBLE" property="markValue"/>
+        <result column="domain_unid" jdbcType="VARCHAR" property="domainUnid"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+    </resultMap>
+
+    <select id="getMark"  resultMap="BaseResultMapp"  resultType="com.company.project.model.MaDeductionItems"  >
+        SELECT  SUM(a.mark_value) AS mark_value, a.level FROM  terata.ma_deduction_item a
+        INNER JOIN `OAU_DOMAIN` d
+        ON (
+        a.`domain_unid` = d.`UNID`  AND  d.`LEFT_INX` >=
+        (SELECT
+        e.LEFT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID = #{domainUnid})
+        AND d.`RIGHT_INX` &lt;=
+        (SELECT
+        e.RIGHT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID = #{domainUnid})
+        )
+    </select>
+</mapper>

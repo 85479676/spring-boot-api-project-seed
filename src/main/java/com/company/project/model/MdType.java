@@ -23,6 +23,9 @@ public class MdType implements Serializable {
     @Column(name = "CHANNEL")
     private String channel;
 
+    @Column(name = "PROTOCOL_UNID")
+    private String protocolUnid;
+
     @Column(name = "K")
     private String k;
 
@@ -40,6 +43,15 @@ public class MdType implements Serializable {
 
     @Column(name = "FLAG_DEL")
     private Boolean flagDel;
+
+    public String getProtocolUnid() {
+        return protocolUnid;
+
+    }
+
+    public void setProtocolUnid(String protocolUnid) {
+        this.protocolUnid = protocolUnid;
+    }
 
     /**
      * @return AIID

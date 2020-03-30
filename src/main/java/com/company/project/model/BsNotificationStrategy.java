@@ -1,7 +1,10 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "BS_NOTIFICATION_STRATEGY")
 public class BsNotificationStrategy {
@@ -9,6 +12,7 @@ public class BsNotificationStrategy {
      * 通知策略
      */
     @Id
+    @GeneratedValue(generator = "UUID")//自动生成UUID
     @Column(name = "UNID")
     private String unid;
 
@@ -29,6 +33,39 @@ public class BsNotificationStrategy {
      */
     @Column(name = "DOMAIN_UNID")
     private String domainUnid;
+    @Column(name = "IS_SAS")
+    private Boolean isSas;
+    @Column(name = "IS_EMAIL")
+    private Boolean isEmail;
+    @Column(name = "IS_VOICE")
+    private Boolean isVoice;
+
+    public Boolean getSas() {
+        return isSas;
+    }
+
+    public void setSas(Boolean sas) {
+        isSas = sas;
+    }
+
+    public Boolean getEmail() {
+        return isEmail;
+    }
+
+    public void setEmail(Boolean email) {
+        isEmail = email;
+    }
+
+    public Boolean getVoice() {
+        return isVoice;
+    }
+
+    public void setVoice(Boolean voice) {
+        isVoice = voice;
+    }
+
+    @Column(name = "FLAG_DEL")
+    private Boolean flagDel;
 
     /**
      * 获取通知策略
@@ -110,5 +147,19 @@ public class BsNotificationStrategy {
      */
     public void setDomainUnid(String domainUnid) {
         this.domainUnid = domainUnid;
+    }
+
+    /**
+     * @return FLAG_DEL
+     */
+    public Boolean getFlagDel() {
+        return flagDel;
+    }
+
+    /**
+     * @param flagDel
+     */
+    public void setFlagDel(Boolean flagDel) {
+        this.flagDel = flagDel;
     }
 }

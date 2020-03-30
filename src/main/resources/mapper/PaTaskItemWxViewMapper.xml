@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PaTaskItemWxViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.PaTaskItemWxView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="user_unid" jdbcType="VARCHAR" property="userUnid" />
+    <result column="task_item_dtime" jdbcType="TIMESTAMP" property="taskItemDtime" />
+    <result column="update_dtime" jdbcType="TIMESTAMP" property="updateDtime" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
+    <result column="task_unid" jdbcType="VARCHAR" property="taskUnid" />
+    <result column="patrol_point_unid" jdbcType="VARCHAR" property="patrolPointUnid" />
+    <result column="cena" jdbcType="BIT" property="cena" />
+    <result column="status_name" jdbcType="VARCHAR" property="statusName" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="point_name" jdbcType="VARCHAR" property="pointName" />
+    <result column="NAME_LOGIN" jdbcType="VARCHAR" property="nameLogin" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
+    <result column="task_time_start" jdbcType="TIME" property="taskTimeStart" />
+    <result column="task_time_end" jdbcType="TIME" property="taskTimeEnd" />
+  </resultMap>
+</mapper>

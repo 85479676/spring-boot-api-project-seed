@@ -16,7 +16,10 @@
     <result column="UPORDOWN" jdbcType="CHAR" property="upordown" />
     <result column="PROTOCOL_TYPE" jdbcType="INTEGER" property="protocolType" />
     <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="ORDERS" jdbcType="INTEGER" property="orders" />
     <result column="FACILITY_NAME" jdbcType="VARCHAR" property="facilityName" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
   </resultMap>
 </mapper>

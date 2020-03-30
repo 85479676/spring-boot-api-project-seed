@@ -23,6 +23,7 @@ public class LegMenu {
     @Column(name = "RIGHT_INX")
     private Integer rightInx;
     @Id
+    @GeneratedValue(generator = "UUID")//自动生成UUID
     @Column(name = "UNID")
     private String unid;
 

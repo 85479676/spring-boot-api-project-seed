@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PmProtocolOrderViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.PmProtocolOrderView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="orders" jdbcType="VARCHAR" property="orders" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="protocol_unid" jdbcType="VARCHAR" property="protocolUnid" />
+    <result column="answer_order" jdbcType="VARCHAR" property="answerOrder" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
+    <result column="is_alarm" jdbcType="SMALLINT" property="isAlarm" />
+    <result column="protocol_name" jdbcType="VARCHAR" property="protocolName" />
+  </resultMap>
+</mapper>

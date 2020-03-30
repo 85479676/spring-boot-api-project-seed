@@ -1,5 +1,7 @@
 package com.company.project.util;
 
+
+import com.company.project.redis.PropertyResources;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -7,7 +9,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public final class RedisUtil {
 
     //Redis服务器IP
-    private static String ADDR = "101.133.136.114";
+    private static String ADDR = PropertyResources.getInstance().getProperties().get("spring.redis.host");
 
     //Redis的端口号
     private static int PORT = 6379;
@@ -53,6 +55,7 @@ public final class RedisUtil {
 
     /**
      * 获取Jedis实例
+     *
      * @return
      */
     public synchronized static Jedis getJedis() {
@@ -71,6 +74,7 @@ public final class RedisUtil {
 
     /**
      * 释放jedis资源
+     *
      * @param jedis
      */
     public static void returnResource(final Jedis jedis) {
@@ -78,6 +82,7 @@ public final class RedisUtil {
             jedisPool.returnResource(jedis);
         }
     }
+
     public static void main(String[] args) {
         getJedis();
     }

@@ -1,5 +1,6 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegPrivilegeView;
@@ -8,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/privileges")
-public class LegPrivilegeViewController {
+public class LegPrivilegeViewController  extends DomainedResource {
     @Resource
     private LegPrivilegeViewService legPrivilegeViewService;
 
@@ -51,10 +53,11 @@ public class LegPrivilegeViewController {
         PageHelper.startPage(page, size);
         List<LegPrivilegeView> list = null;
         Condition condition = new Condition(LegPrivilegeView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
         list = legPrivilegeViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

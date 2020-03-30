@@ -6,7 +6,7 @@
       WARNING - @mbg.generated
     -->
     <result column="UNID" jdbcType="VARCHAR" property="unid" />
-    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="NAME_DATE" jdbcType="DATE" property="nameDate" />
     <result column="ELEC_A_MAX" jdbcType="DOUBLE" property="elecAMax" />
     <result column="ELEC_A_MIN" jdbcType="DOUBLE" property="elecAMin" />
     <result column="ELEC_A_AVE" jdbcType="DOUBLE" property="elecAAve" />
@@ -23,9 +23,12 @@
     <result column="TEM4_MIN" jdbcType="DOUBLE" property="tem4Min" />
     <result column="TEM4_AVE" jdbcType="DOUBLE" property="tem4Ave" />
     <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
     <result column="SYSTEM_DATIME" jdbcType="TIMESTAMP" property="systemDatime" />
     <result column="ELEC_V_MAX" jdbcType="DOUBLE" property="elecVMax" />
     <result column="ELEC_V_MIN" jdbcType="DOUBLE" property="elecVMin" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="ALARM_COUNT" jdbcType="INTEGER" property="alarmCount" />
   </resultMap>
 </mapper>

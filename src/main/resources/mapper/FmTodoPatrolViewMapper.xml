@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmTodoPatrolViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.FmTodoPatrolView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ID_FLOW" jdbcType="TINYINT" property="idFlow" />
+    <result column="ID_STATUS" jdbcType="SMALLINT" property="idStatus" />
+    <result column="ID_PRIORITY" jdbcType="TINYINT" property="idPriority" />
+    <result column="OPEN_ID_REPORTER" jdbcType="CHAR" property="openIdReporter" />
+    <result column="OPEN_ID_CREATOR" jdbcType="CHAR" property="openIdCreator" />
+    <result column="OPEN_ID_ASSIGNEE" jdbcType="CHAR" property="openIdAssignee" />
+    <result column="UNID_BUSINESS_UNIT" jdbcType="CHAR" property="unidBusinessUnit" />
+    <result column="UNID_CHECKPOINT" jdbcType="CHAR" property="unidCheckpoint" />
+    <result column="DATIME_HIT" jdbcType="TIMESTAMP" property="datimeHit" />
+    <result column="DATIME_BEGIN" jdbcType="TIMESTAMP" property="datimeBegin" />
+    <result column="DATIME_DUE" jdbcType="TIMESTAMP" property="datimeDue" />
+    <result column="FLAG_DONE" jdbcType="BIT" property="flagDone" />
+    <result column="FLAG_EXP" jdbcType="BIT" property="flagExp" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="CHECKPOINT_NAME" jdbcType="VARCHAR" property="checkpointName" />
+    <result column="NAME_LOGIN" jdbcType="VARCHAR" property="nameLogin" />
+  </resultMap>
+</mapper>

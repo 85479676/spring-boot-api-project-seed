@@ -6,6 +6,7 @@ import com.company.project.model.OauOpenId;
 import com.company.project.service.OauOpenIdService;
 import com.company.project.util.MD5Util;
 import com.company.project.util.RedisService;
+import com.company.project.util.SHA1;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +29,15 @@ public class OauOpenIdController {
     @Resource
     private MD5Util md5Util;
 
-    @PostMapping("/add")
-    public Result add(OauOpenId oauOpenId) {
-        String md5 = MD5Util.encode(oauOpenId.getSalt());
-        oauOpenId.setSalt(md5);
-        oauOpenIdService.save(oauOpenId);
-        return ResultGenerator.genSuccessResult();
-    }
-
+//    @PostMapping("/add")
+//    public Result add(OauOpenId oauOpenId, String passwd) {
+//        String sala = UNID.getUnidLowerCase();
+//        String pass=SHA1.getHash(passwd + sala);
+//        oauOpenId.setSalt(sala);
+//        oauOpenId.setCredential(pass);
+//        oauOpenIdService.save(oauOpenId);
+//        return ResultGenerator.genSuccessResult();
+//    }
     @DeleteMapping("/{unid}")
     public Result delete(@PathVariable String unid) {
         OauOpenId oauOpenId = oauOpenIdService.findById(unid);
@@ -78,26 +80,24 @@ public class OauOpenIdController {
     @PutMapping("/{unid}")
     public Result passwords(@PathVariable String unid, @RequestParam String password) {
         OauOpenId oauOpenId = oauOpenIdService.findById(unid);
-        String md5 = MD5Util.encode(password);
-        oauOpenId.setSalt(md5);
+
+        String salt = oauOpenId.getSalt();
+
+        oauOpenId.setCredential(SHA1.getHash(password + salt));
+//        String md5 = MD5Util.encode(password);
+//        oauOpenId.setSalt(md5);
         oauOpenIdService.update(oauOpenId);
         return ResultGenerator.genSuccessResult();
     }
 
 
+
+
     @GetMapping("/{unid}")
     public Result detail(@PathVariable String unid) {
         OauOpenId oauOpenId = oauOpenIdService.findById(unid);
-//        if (Objects.equals(oauOpenId.getNameLogin(), username) &&
-//                Objects.equals(oauOpenId.getSalt(), password)) {
-//
-//            String token = UUID.randomUUID().toString();
-//            redisService.set(token, username);
-//            return "用户：" + username + "登录成功，token是：" + token;
-//        } else {
-//            return "用户名或密码错误，登录失败！";
-//        }
-        return ResultGenerator.genSuccessResult();
+
+        return ResultGenerator.genSuccessResult(oauOpenId);
     }
 
     @GetMapping("/list")

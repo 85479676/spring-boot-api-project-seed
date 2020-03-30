@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "BS_NOTIFICATION_PERSON")
 public class BsNotificationPerson {
     @Id
+    @GeneratedValue(generator = "UUID")//自动生成UUID
     @Column(name = "UNID")
     private String unid;
 
@@ -56,6 +57,9 @@ public class BsNotificationPerson {
      */
     @Column(name = "UPDATE_DTIME")
     private Date updateDtime;
+
+    @Column(name = "FLAG_DEL")
+    private Boolean flagDel;
 
     /**
      * @return UNID
@@ -233,5 +237,19 @@ public class BsNotificationPerson {
      */
     public void setUpdateDtime(Date updateDtime) {
         this.updateDtime = updateDtime;
+    }
+
+    /**
+     * @return FLAG_DEL
+     */
+    public Boolean getFlagDel() {
+        return flagDel;
+    }
+
+    /**
+     * @param flagDel
+     */
+    public void setFlagDel(Boolean flagDel) {
+        this.flagDel = flagDel;
     }
 }

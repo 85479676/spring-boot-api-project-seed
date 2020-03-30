@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.MaDeductionItemTypeViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.MaDeductionItemTypeView">
+  <!--
+    WARNING - @mbg.generated
+  -->
+  <result column="unid" jdbcType="VARCHAR" property="unid" />
+  <result column="facility_unid" jdbcType="VARCHAR" property="facilityUnid" />
+  <result column="event_type" jdbcType="VARCHAR" property="eventType" />
+  <result column="domain_unid" jdbcType="VARCHAR" property="domainUnid" />
+  <result column="mark_type_unid" jdbcType="VARCHAR" property="markTypeUnid" />
+  <result column="mark_value" jdbcType="DOUBLE" property="markValue" />
+  <result column="level" jdbcType="INTEGER" property="level" />
+  <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime" />
+  <result column="message_source" jdbcType="INTEGER" property="messageSource" />
+  <result column="name" jdbcType="VARCHAR" property="name" />
+  <result column="max_mark" jdbcType="DOUBLE" property="maxMark" />
+  <result column="domain_name" jdbcType="VARCHAR" property="domainName" />
+  <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+  <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
+  <result column="aliasName" jdbcType="VARCHAR" property="aliasname" />
+  <result column="FACILITY_NAME" jdbcType="VARCHAR" property="facilityName" />
+  <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+</resultMap>
+  <resultMap id="BaseResultMab" type="com.company.project.model.MaDeductionItemTypeViews">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="type" javaType="INTEGER" property="type"/>
+    <result column="mark_value" jdbcType="DOUBLE" property="markValue" />
+    <result column="max_mark" jdbcType="DOUBLE" property="maxMark" />
+  </resultMap>
+
+
+
+  <select id="getMark" resultMap="BaseResultMab" >
+    select SUM(mmt.max_mark) as max_mark,SUM(md.mark_value) as mark_value,type  from ma_deduction_item md right join ma_mark_type mmt
+on md.mark_type_unid=mmt.unid  GROUP BY mmt.type
+  </select>
+</mapper>

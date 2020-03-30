@@ -50,7 +50,10 @@ public class LegMenuView {
     @Column(name = "FLAG_PRIV")
     private Boolean flagPriv;
 
+    @Column(name = "SYSTEM_MENU_TYPE")
+    private String systemMenuType;
     @Column(name = "FLAG_CACHE")
+
     private Boolean flagCache;
 
     @Column(name = "FLAG_DEL")
@@ -58,6 +61,22 @@ public class LegMenuView {
 
     @Column(name = "DOMAIN_NAME")
     private String domainName;
+
+
+    /**
+     * @return SYSTEM_MENU_TYPE
+     */
+    public String getSystemMenuType() {
+        return systemMenuType;
+    }
+
+    /**
+     * @param systemMenuType
+     */
+    public void setSystemMenuType(String systemMenuType) {
+        this.systemMenuType = systemMenuType;
+    }
+
 
     /**
      * @return AIID

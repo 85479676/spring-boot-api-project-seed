@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PmProtocolItemMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.PmProtocolItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="orders" jdbcType="VARCHAR" property="orders" />
+    <result column="alias_unid" jdbcType="VARCHAR" property="aliasUnid" />
+    <result column="small_and_big" jdbcType="BIT" property="smallAndBig" />
+    <result column="start" jdbcType="INTEGER" property="start" />
+    <result column="length" jdbcType="INTEGER" property="length" />
+    <result column="data_type" jdbcType="SMALLINT" property="dataType" />
+    <result column="is_content" jdbcType="BIT" property="isContent" />
+    <result column="proportion" jdbcType="DOUBLE" property="proportion" />
+    <result column="connect_order" jdbcType="VARCHAR" property="connectOrder" />
+    <result column="connect_num" jdbcType="SMALLINT" property="connectNum" />
+    <result column="num" jdbcType="SMALLINT" property="num" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="is_show" jdbcType="BIT" property="isShow" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

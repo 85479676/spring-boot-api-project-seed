@@ -1,7 +1,10 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "FM_FACILITY_VIEW")
 public class FmFacilityView {
@@ -10,6 +13,9 @@ public class FmFacilityView {
     @GeneratedValue(generator = "UUID")//自动生成UUID
     @Column(name = "UNID")
     private String unid;
+
+    @Column(name = "UNID_MAP")
+    private String unidMap;
 
     @Column(name = "DATIME_SYS")
     private Date datimeSys;
@@ -28,6 +34,10 @@ public class FmFacilityView {
 
     @Column(name = "NAME")
     private String name;
+    @Column(name = "X")
+    private String x;
+    @Column(name = "Y")
+    private String y;
 
     /**
      * 火灾报警联动控制系统
@@ -49,6 +59,8 @@ public class FmFacilityView {
 
     @Column(name = "UNID_BUSINESS_UNIT")
     private String unidBusinessUnit;
+    @Column(name = "ALIAS")
+    private String alias;
 
     /**
      * 机号
@@ -89,6 +101,9 @@ public class FmFacilityView {
     @Column(name = "BITS")
     private byte[] bits;
 
+    @Column(name = "STATUS")
+    private Boolean status;
+
     /**
      * 是否被分层图关联
      */
@@ -107,6 +122,45 @@ public class FmFacilityView {
     @Column(name = "SYSTEM_NAME")
     private String systemName;
 
+    public String getUnidMap() {
+        return unidMap;
+    }
+
+    public void setUnidMap(String unidMap) {
+        this.unidMap = unidMap;
+    }
+
+    public String getX() {
+        return x;
+    }
+
+    public void setX(String x) {
+        this.x = x;
+    }
+
+    public String getY() {
+        return y;
+    }
+
+    public void setY(String y) {
+        this.y = y;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
     /**
      * @return UNID

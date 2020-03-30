@@ -1,16 +1,18 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.FmHostView;
-import com.company.project.model.LegAuthorityView;
 import com.company.project.service.FmHostViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/fmhostview")
-public class FmHostViewController {
+public class FmHostViewController extends DomainedResource {
     @Resource
     private FmHostViewService fmHostViewService;
 
@@ -47,18 +49,22 @@ public class FmHostViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String name, @RequestParam(required = false) String domainName) {
+    public Result list(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size,
+                       @RequestParam(required = false) String domainUnid, @RequestParam(required = false) String name, @RequestParam(required = false) String domainName) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<FmHostView> list = null;
         Condition condition = new Condition(FmHostView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
 
         if (domainName != null) {
-            condition.createCriteria().andCondition("DOMAIN_NAME like'%" + domainName + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("DOMAIN_NAME like'%" + domainName + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
+        cr.andCondition(temp);
         list = fmHostViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

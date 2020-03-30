@@ -3,6 +3,8 @@ package com.company.project.util;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.MessageDigest;
+import java.util.UUID;
+
 @RestController
 public class MD5Util {
     private static final String SALT = "tamboo";
@@ -33,8 +35,18 @@ public class MD5Util {
         return hexValue.toString();
     }
 
+    public static final String getUnidLowerCase() {
+        UUID uuid = UUID.randomUUID();
+        String uuidString = uuid.toString();
+        return uuidString.replaceAll("-", "");
+    }
+
     public static void main(String[] args) {
-        System.out.println(MD5Util.encode("12345466"));
+
+        String id = null;
+        id = "12345466";
+        id=getUnidLowerCase();
+        System.out.println(id);
 
 
     }

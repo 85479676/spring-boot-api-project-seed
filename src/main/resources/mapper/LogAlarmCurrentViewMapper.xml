@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LogAlarmCurrentViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LogAlarmCurrentView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="ID_SYSTEM" jdbcType="SMALLINT" property="idSystem" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="COUNT_EVENT" jdbcType="INTEGER" property="countEvent" />
+    <result column="BITS" jdbcType="BIT" property="bits" />
+    <result column="STATUS" jdbcType="BIT" property="status" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="ALIAS" jdbcType="VARCHAR" property="alias" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="EVENT_COMMENT" jdbcType="VARCHAR" property="eventComment" />
+    <result column="ALARM_STATUS" jdbcType="BIT" property="alarmStatus" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="AlarmInfo" jdbcType="VARCHAR" property="alarminfo" />
+  </resultMap>
+
+
+  <resultMap id="BaseResultMaps" type="com.company.project.model.LogAlarmHistoryViews">
+    <!--
+      WARNING - @mbg.generated
+    -->
+
+    <result column="STATUS" jdbcType="INTEGER" property="status"/>
+    <result column="ALIAS" jdbcType="VARCHAR" property="alias"/>
+    <result column="AlarmInfo" jdbcType="VARCHAR" property="alarminfo"/>
+  </resultMap>
+
+  <select id="getCountAlarm" resultMap="BaseResultMaps">
+        SELECT
+        COUNT(a.UNID) AS STATUS,
+        ALIAS,
+        `AlarmInfo` (`a`.`UNID`) AS `AlarmInfo`
+        FROM
+        `FM_FACILITY` `a`
+        LEFT JOIN `LOG_ALARM_CURRENT` `b`
+        ON `a`.`UNID` = `b`.`facility_unid`
+        INNER JOIN `OAU_DOMAIN` d
+        ON (
+        a.`DOMAIN_UNID` = d.`UNID`  AND  d.`LEFT_INX` >=
+        (SELECT
+        e.LEFT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID = #{domainUnid})
+        AND d.`RIGHT_INX` &lt;=
+        (SELECT
+        e.RIGHT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID =  #{domainUnid})
+        ) WHERE a.FLAG_DEL=0
+        GROUP BY  ALIAS
+
+
+  </select>
+
+</mapper>

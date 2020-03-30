@@ -1,7 +1,9 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "FM_HOST_VIEW")
 public class FmHostView {
@@ -34,7 +36,7 @@ public class FmHostView {
      * 设备状态 0 是不在线  1是在线
      */
     @Column(name = "STATUS")
-    private byte[] status;
+    private Boolean status;
 
     /**
      * 最后一次修改时间
@@ -62,6 +64,12 @@ public class FmHostView {
 
     @Column(name = "DOMAIN_NAME")
     private String domainName;
+
+    @Column(name = "LEFT_INX")
+    private Long leftInx;
+
+    @Column(name = "RIGHT_INX")
+    private Long rightInx;
 
     /**
      * 获取唯一标识
@@ -140,7 +148,7 @@ public class FmHostView {
      *
      * @return STATUS - 设备状态 0 是不在线  1是在线
      */
-    public byte[] getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
@@ -149,7 +157,7 @@ public class FmHostView {
      *
      * @param status 设备状态 0 是不在线  1是在线
      */
-    public void setStatus(byte[] status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -237,5 +245,33 @@ public class FmHostView {
      */
     public void setDomainName(String domainName) {
         this.domainName = domainName;
+    }
+
+    /**
+     * @return LEFT_INX
+     */
+    public Long getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Long leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Long getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Long rightInx) {
+        this.rightInx = rightInx;
     }
 }

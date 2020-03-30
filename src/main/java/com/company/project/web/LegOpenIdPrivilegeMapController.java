@@ -3,13 +3,12 @@ package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegOpenIdPrivilegeMap;
-import com.company.project.model.LegUserGroupDomainMap;
-import com.company.project.model.LegUserGroupPrivilegeMap;
 import com.company.project.service.LegOpenIdPrivilegeMapService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -61,8 +60,9 @@ public class LegOpenIdPrivilegeMapController {
         PageHelper.startPage(page, size);
         List<LegOpenIdPrivilegeMap> list = null;
         Condition condition = new Condition(LegOpenIdPrivilegeMap.class);
+        Example.Criteria cr = condition.createCriteria();
         if (unid != null) {
-            condition.createCriteria().andCondition("OPEN_ID='" + unid + "'");
+            cr.andCondition("OPEN_ID='" + unid + "'");
         }
         list = legOpenIdPrivilegeMapService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);

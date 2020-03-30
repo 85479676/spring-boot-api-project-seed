@@ -1,7 +1,9 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "LEG_USER_GROUP_VIEW")
 public class LegUserGroupView {
@@ -35,6 +37,10 @@ public class LegUserGroupView {
      */
     @Column(name = "DOMAIN_UNID")
     private String domainUnid;
+    @Column(name = "LEFT_INX")
+    private Integer leftInx;
+    @Column(name = "RIGHT_INX")
+    private Integer rightInx;
 
     /**
      * 删除状态
@@ -52,6 +58,34 @@ public class LegUserGroupView {
      */
     public String getUnid() {
         return unid;
+    }
+
+    /**
+     * @return LEFT_INX
+     */
+    public Integer getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Integer leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Integer getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Integer rightInx) {
+        this.rightInx = rightInx;
     }
 
     /**

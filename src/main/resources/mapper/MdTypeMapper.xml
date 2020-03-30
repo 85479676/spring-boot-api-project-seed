@@ -10,6 +10,7 @@
     <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
     <result column="PREFIX" jdbcType="VARCHAR" property="prefix" />
     <result column="CHANNEL" jdbcType="VARCHAR" property="channel" />
+    <result column="PROTOCOL_UNID" jdbcType="VARCHAR" property="protocolUnid" />
     <result column="K" jdbcType="VARCHAR" property="k" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="TAG" jdbcType="VARCHAR" property="tag" />

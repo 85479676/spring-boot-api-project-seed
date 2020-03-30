@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmFacilityMapMarkerViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.FmFacilityMapMarkerView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="UNID_MAP" jdbcType="CHAR" property="unidMap" />
+    <result column="UNID_ENTITY" jdbcType="CHAR" property="unidEntity" />
+    <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="X" jdbcType="DECIMAL" property="x" />
+    <result column="Y" jdbcType="DECIMAL" property="y" />
+    <result column="Z" jdbcType="DECIMAL" property="z" />
+    <result column="COUNT_EVENT" jdbcType="INTEGER" property="countEvent" />
+    <result column="AVATAR" jdbcType="VARCHAR" property="avatar" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="FILE_UNID" jdbcType="CHAR" property="fileUnid" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="TYPE_NAME" jdbcType="VARCHAR" property="typeName" />
+
+  </resultMap>
+
+  <!--<select id="getAllFacility" resultType="">-->
+     <!--SELECT DISTINCT ff.*,ffmm.UNID_MAP FROM FM_FACILITY ff LEFT JOIN FM_FACILITY_MAP_MARKER ffmm ON ff.UNID=ffmm.UNID_ENTITY AND ffmm.UNID_MAP=#{unid}  WHERE ffmm.UNID_MAP IS -->
+     <!--NULL -->
+  <!--</select>-->
+</mapper>

@@ -11,6 +11,12 @@ public class LegAuthorityView {
     @Column(name = "UNID")
     private String unid;
 
+    @Column(name = "LEFT_INX")
+    private Integer leftInx;
+
+    @Column(name = "RIGHT_INX")
+    private Integer rightInx;
+
     /**
      * 权限名称
      */
@@ -34,6 +40,35 @@ public class LegAuthorityView {
 
     @Column(name = "DOMAIN_NAME")
     private String domainName;
+
+    /**
+     * @return LEFT_INX
+     */
+    public Integer getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Integer leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Integer getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Integer rightInx) {
+        this.rightInx = rightInx;
+    }
+
 
     /**
      * @return AIID

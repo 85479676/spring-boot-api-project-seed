@@ -27,10 +27,19 @@ public class BsMoticeficationStrategyFmFacilityMapController {
         return ResultGenerator.genSuccessResult();
     }
 
-    @DeleteMapping("/{unid}")
-    public Result delete(@PathVariable String unid) {
+    @PostMapping("/{unid}")
+    public Result delete(@PathVariable String unid, @RequestParam(required = false) String fmfunid) {
         bsMoticeficationStrategyFmFacilityMapService.deleteById(unid);
+        String[] menulist = fmfunid.split(",");
+        for (String menu : menulist
+        ) {
+            BsMoticeficationStrategyFmFacilityMap menuMap = new BsMoticeficationStrategyFmFacilityMap();
+            menuMap.setNsUnid(unid);
+            menuMap.setFmfUnid(menu);
+            bsMoticeficationStrategyFmFacilityMapService.save(menuMap);
+        }
         return ResultGenerator.genSuccessResult();
+
     }
 
     @PutMapping("/update")
@@ -49,6 +58,7 @@ public class BsMoticeficationStrategyFmFacilityMapController {
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<BsMoticeficationStrategyFmFacilityMap> list = bsMoticeficationStrategyFmFacilityMapService.findAll();
+
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }

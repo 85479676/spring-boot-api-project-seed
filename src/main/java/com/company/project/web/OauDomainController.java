@@ -3,12 +3,13 @@ package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.OauDomain;
-import com.company.project.model.OauOpenId;
 import com.company.project.service.OauDomainService;
+import com.company.project.util.UNID;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,7 +27,7 @@ public class OauDomainController {
     private OauDomainService oauDomainService;
 
     @PostMapping("/add")
-    public Result add( OauDomain oauDomain) {
+    public Result add(OauDomain oauDomain) {
         oauDomainService.save(oauDomain);
         return ResultGenerator.genSuccessResult();
     }
@@ -39,10 +40,43 @@ public class OauDomainController {
         return ResultGenerator.genSuccessResult();
     }
 
+    /**
+     * 使用存储过程删除
+     *
+     * @param unid
+     * @return
+     */
+    @DeleteMapping("/del/{unid}")
+    public Result deleteDel(@PathVariable String unid) {
+        oauDomainService.deleteDomain(unid);
+        return ResultGenerator.genSuccessResult();
+    }
 
+    /**
+     * 存储过程修改
+     *
+     * @param oauDomain
+     * @return
+     */
+    @PutMapping("/c/update")
+    public Result updateUp(OauDomain oauDomain) {
+        oauDomainService.updateDomain(oauDomain);
+        return ResultGenerator.genSuccessResult();
+    }
 
-
-
+    /**
+     * 存储过程添加
+     *
+     * @param oauDomain
+     * @return
+     */
+    @PostMapping("/c/add")
+    public Result addA(OauDomain oauDomain) {
+        String unid = UNID.getUnidLowerCase();
+        oauDomain.setUnid(unid);
+        oauDomainService.addDomain(oauDomain);
+        return ResultGenerator.genSuccessResult();
+    }
 
     @PutMapping("/update")
     public Result update(OauDomain oauDomain) {
@@ -61,10 +95,11 @@ public class OauDomainController {
         PageHelper.startPage(page, size);
         List<OauDomain> list = null;
         Condition condition = new Condition(OauDomain.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0").andCondition("FLAG_AVA=0");
         list = oauDomainService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

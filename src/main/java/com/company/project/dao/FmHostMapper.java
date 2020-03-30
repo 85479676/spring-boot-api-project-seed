@@ -4,4 +4,6 @@ import com.company.project.core.Mapper;
 import com.company.project.model.FmHost;
 
 public interface FmHostMapper extends Mapper<FmHost> {
+
+
 }

@@ -1,26 +1,14 @@
 package com.company.project.configurer;
 
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.*;
-
-import javax.annotation.Resource;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-
 import com.company.project.core.Result;
 import com.company.project.core.ResultCode;
 import com.company.project.core.ServiceException;
 import com.company.project.model.OauAccessToken;
 import com.company.project.service.OauAccessTokenService;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,10 +20,21 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import tk.mybatis.mapper.entity.Condition;
+
+import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Spring MVC 配置
@@ -63,12 +62,16 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
         converter.setFastJsonConfig(config);
         converter.setDefaultCharset(Charset.forName("UTF-8"));
-//        converter.setDateFormat("yyyy-MM-dd HH:mm:ss");
         converter.setDateFormat("yyyy-MM-dd HH:mm:ss");
+//        converter.setDateFormat("yyyy-MM-dd");
         converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON_UTF8));
         converters.add(converter);
     }
 
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
     //统一异常处理
     @Override
@@ -140,7 +143,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
                         return false;
                     }
                 }
-            }).excludePathPatterns("/api/login");
+            }).excludePathPatterns("/api/*");
 
         }
     }
@@ -167,13 +170,13 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
 //        String token = response.getHeader("");
         String token = request.getHeader("Authorization");
-        if(token!=null&&token.contains("Bearer")) {
+        if (token != null && token.contains("Bearer")) {
 
             String[] tokenValue = token.split(" ");
-            if(tokenValue.length>1) {
+            if (tokenValue.length > 1) {
                 OauAccessToken oauAccessToken = new OauAccessToken();
                 Condition condition = new Condition(oauAccessToken.getClass());
-                condition.createCriteria().andCondition("TOKEN='" + tokenValue[1] + "'").andCondition(Long.toString( new Date().getTime())+" < DATIME_UNIX+EXPIRES_IN");
+                condition.createCriteria().andCondition("TOKEN='" + tokenValue[1] + "'").andCondition(Long.toString(new Date().getTime()) + " < DATIME_UNIX+EXPIRES_IN");
                 List<OauAccessToken> result = tokenService.findByCondition(condition);
                 if (result.size() > 0) {
                     return true;
@@ -182,7 +185,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
                 }
             }
         }
-        return  false;
+        return false;
 
 //        if ()
 //            String requestSign = request.getParameter("sign");//获得请求签名，如sign=19e907700db7ad91318424a97c54ed57

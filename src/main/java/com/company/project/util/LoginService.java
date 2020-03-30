@@ -1,21 +1,17 @@
 package com.company.project.util;
 
-import com.company.project.core.ResultGenerator;
 import com.company.project.model.OauAccessToken;
 import com.company.project.model.OauOpenId;
-import com.company.project.model.SysMenuView;
 import com.company.project.service.OauAccessTokenService;
 import com.company.project.service.OauOpenIdService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Condition;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -28,8 +24,8 @@ public class LoginService {
     private OauOpenIdService openIdService;
     @Autowired
     private OauAccessTokenService tokenService;
-    @Autowired
-    private JwtHelper jwtHelper;
+    //    @Autowired
+//    private JwtHelper jwtHelper;
     @Resource
     private MD5Util md5Util;
 
@@ -38,11 +34,15 @@ public class LoginService {
         String ip4 = IpUtil.getIpAddr(request);
         OauAccessToken accessToken = new OauAccessToken();
         OauOpenId user = openIdService.selectByName(username);
-        password = MD5Util.encode(password);
-        if (Objects.equals(user.getNameLogin(), username) && Objects.equals(user.getSalt(), password)) {
+        String sale = user.getSalt();
+        password = SHA1.getHash(password + sale);
+        if (Objects.equals(user.getNameLogin(), username) && Objects.equals(user.getCredential(), password)) {
             String token = UUID.randomUUID().toString().replaceAll("-", "");
-//            String token = jwtHelper.sign(accessToken.getToken(), user.getUnid());
+            String id = user.getUnid();
+            String domain=user.getDomainUnid();
+            String timeString = String.valueOf(accessToken.getExpiresIn());
             redisService.set(token, username);
+//            redisService.set(timeString, username);
             accessToken.setToken(token);
             accessToken.setOpenId(user.getUnid());
             accessToken.setDomainUnid(user.getDomainUnid());
@@ -50,7 +50,7 @@ public class LoginService {
             accessToken.setExpiresIn(604800);
             accessToken.setIp4(ip4);
             tokenService.save(accessToken);
-            return "用户：" + username + "登录成功，token=：" + token;
+            return "token=" + token + "&ID=" + id+"&DOMAIN=" + domain;
 
         } else {
             return "用户名或密码错误，登录失败！";

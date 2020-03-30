@@ -1,7 +1,9 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "AN_WATER_DAY_VIEW")
 public class AnWaterDayView {
@@ -62,6 +64,12 @@ public class AnWaterDayView {
 
     @Column(name = "DOMAIN_NAME")
     private String domainName;
+
+    @Column(name = "LEFT_INX")
+    private Long leftInx;
+
+    @Column(name = "RIGHT_INX")
+    private Long rightInx;
 
     /**
      * 获取唯一标识
@@ -237,5 +245,33 @@ public class AnWaterDayView {
      */
     public void setDomainName(String domainName) {
         this.domainName = domainName;
+    }
+
+    /**
+     * @return LEFT_INX
+     */
+    public Long getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Long leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Long getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Long rightInx) {
+        this.rightInx = rightInx;
     }
 }

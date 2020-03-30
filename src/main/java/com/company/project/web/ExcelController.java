@@ -4,16 +4,13 @@ package com.company.project.web;
 import com.alibaba.fastjson.JSON;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.model.LegButton;
 import com.company.project.model.LegUserGroup;
 import com.company.project.model.OauDomain;
 import com.company.project.model.OauOpenId;
-import com.company.project.service.LegButtonService;
 import com.company.project.service.LegUserGroupService;
 import com.company.project.service.OauDomainService;
 import com.company.project.service.OauOpenIdService;
 import com.company.project.util.ExcelUtil;
-
 import com.company.project.util.MD5Util;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.slf4j.Logger;
@@ -86,21 +83,16 @@ public class ExcelController {
                 service.save(openId);
             }
             if (isTrue) {
-//                legButtonService.save(list1);
+                return ResultGenerator.genSuccessResult("添加成功!!!");
             } else {
-
                 // 不正确
-
                 list.forEach(item -> {
                     item.put("error", "名称不存在");
-
                 });
                 // 保存
                 String[] title = {"id", "姓名", "年龄", "备注"};
-
                 // excel文件名
                 String fileName_new = new File(".").getCanonicalPath() + "/维护单表" + System.currentTimeMillis() + ".xls";
-
                 // sheet名
                 String sheetName = "维护单表";
                 String[][] content = new String[list.size()][];
@@ -120,14 +112,10 @@ public class ExcelController {
 
         } catch (Exception e) {
             e.printStackTrace();
-
         }
-
         System.out.println(JSON.toJSONString(list));
         return ResultGenerator.genSuccessResult("Sucess");
-
     }
-
     /**
      * 导出报表
      *
@@ -138,7 +126,7 @@ public class ExcelController {
                                   HttpServletResponse response) throws Exception {
 
         // excel文件名
-        String fileNameE = "维护单表" + System.currentTimeMillis() + ".xls";
+        String fileNameE = "用户新增" + System.currentTimeMillis() + ".xlsx";
         OutputStream os = null;
         FileInputStream fis = null;
         // 响应到客户端

@@ -1,14 +1,15 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LogTupleSensorView;
-import com.company.project.model.MdModelView;
 import com.company.project.service.LogTupleSensorViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tuplesensor")
-public class LogTupleSensorViewController {
+public class LogTupleSensorViewController extends DomainedResource {
     @Resource
     private LogTupleSensorViewService logTupleSensorViewService;
 
@@ -53,14 +54,16 @@ public class LogTupleSensorViewController {
 
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size, @RequestParam(required = false) String idHost) {
+
         PageHelper.startPage(page, size);
         List<LogTupleSensorView> list = null;
         Condition condition = new Condition(LogTupleSensorView.class);
+        Example.Criteria cr = condition.createCriteria();
 //        if (unidEntity != null) {
 //            condition.createCriteria().andCondition("UNID_ENTITY=+unidEntity").andCondition("FLAG_DEL=0");
 //        }
         if (idHost != null) {
-            condition.createCriteria().andCondition("ID_HOST ='" + idHost + "'");
+            cr.andCondition("ID_HOST ='" + idHost + "'");
         }
         list = logTupleSensorViewService.findByCondition(condition);
 

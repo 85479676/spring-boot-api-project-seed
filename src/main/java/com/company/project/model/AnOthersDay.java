@@ -1,9 +1,15 @@
 package com.company.project.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "AN_OTHERS_DAY")
+@Data
 public class AnOthersDay {
     /**
      * 唯一标识
@@ -15,8 +21,9 @@ public class AnOthersDay {
     /**
      * 报警日期
      */
-    @Column(name = "NAME")
-    private String name;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @Column(name = "DATIME_TIME")
+    private Date datimeTime;
 
     /**
      * 报警次数
@@ -31,74 +38,15 @@ public class AnOthersDay {
     private Date systemDatime;
 
     /**
-     * 获取唯一标识
-     *
-     * @return UNID - 唯一标识
+     * 故障次数
      */
-    public String getUnid() {
-        return unid;
-    }
+    @Column(name = "FAULT_COUNT")
+    private Integer faultCount;
 
     /**
-     * 设置唯一标识
-     *
-     * @param unid 唯一标识
+     * 设备唯一标识
      */
-    public void setUnid(String unid) {
-        this.unid = unid;
-    }
+    @Column(name = "FACILITY_UNID")
+    private String facilityUnid;
 
-    /**
-     * 获取报警日期
-     *
-     * @return NAME - 报警日期
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * 设置报警日期
-     *
-     * @param name 报警日期
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * 获取报警次数
-     *
-     * @return ALARM_COUNT - 报警次数
-     */
-    public Integer getAlarmCount() {
-        return alarmCount;
-    }
-
-    /**
-     * 设置报警次数
-     *
-     * @param alarmCount 报警次数
-     */
-    public void setAlarmCount(Integer alarmCount) {
-        this.alarmCount = alarmCount;
-    }
-
-    /**
-     * 获取系统时间
-     *
-     * @return SYSTEM_DATIME - 系统时间
-     */
-    public Date getSystemDatime() {
-        return systemDatime;
-    }
-
-    /**
-     * 设置系统时间
-     *
-     * @param systemDatime 系统时间
-     */
-    public void setSystemDatime(Date systemDatime) {
-        this.systemDatime = systemDatime;
-    }
 }

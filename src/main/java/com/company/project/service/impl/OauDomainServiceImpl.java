@@ -24,4 +24,22 @@ public class OauDomainServiceImpl extends AbstractService<OauDomain> implements 
     public OauDomain selectName(String domain_unid) {
         return oauDomainMapper.selectGetName(domain_unid);
     }
+
+    @Override
+    public int deleteDomain(String unid) {
+        return oauDomainMapper.deleteDomain(unid);
+    }
+
+    @Override
+    public void addDomain(OauDomain oauDomain) {
+        oauDomainMapper.addDomain(oauDomain);
+
+    }
+
+    @Override
+    public void updateDomain(OauDomain oauDomain) {
+        oauDomainMapper.updateDomain(oauDomain);
+    }
+
+
 }

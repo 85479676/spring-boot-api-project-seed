@@ -3,14 +3,17 @@ package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.MdType;
-import com.company.project.model.OauDomain;
+import com.company.project.model.MdTypeView;
 import com.company.project.service.MdTypeService;
+import com.company.project.service.MdTypeViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,6 +25,9 @@ import java.util.List;
 public class MdTypeController {
     @Resource
     private MdTypeService mdTypeService;
+
+    @Resource
+    private MdTypeViewService mdTypeViewService;
 
     @PostMapping("/add")
     public Result add(MdType mdType) {
@@ -50,21 +56,45 @@ public class MdTypeController {
         return ResultGenerator.genSuccessResult(mdType);
     }
 
+//    @GetMapping("/list")
+//    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "50") Integer size, @RequestParam(required = false) String name,
+//                       @RequestParam(required = false) String channel) {
+//        PageHelper.startPage(page, size);
+//        List<MdType> list = null;
+//        Condition condition = new Condition(MdType.class);
+//        Example.Criteria cr = condition.createCriteria();
+//        if (name != null) {
+//            cr.andCondition("NAME like'%" + name + "%'");
+//        }
+//        if (channel != null) {
+//            cr.andCondition("CHANNEL like'%" + channel + "%'");
+//        }
+//        cr.andCondition("FLAG_DEL=0");
+//        list = mdTypeService.findByCondition(condition);
+//        PageInfo pageInfo = new PageInfo(list);
+//        return ResultGenerator.genSuccessResult(pageInfo);
+//    }
+
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "50") Integer size, @RequestParam(required = false) String name,
+    public Result list(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size, @RequestParam(required = false) String name,
                        @RequestParam(required = false) String channel) {
+
         PageHelper.startPage(page, size);
-        List<MdType> list = null;
-        Condition condition = new Condition(MdType.class);
+        List<MdTypeView> list = null;
+        Condition condition = new Condition(MdTypeView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        if (channel!=null) {
-            condition.createCriteria().andCondition("CHANNEL like'%" + channel + "%'").andCondition("FLAG_DEL=0");
+        if (channel != null) {
+            cr.andCondition("CHANNEL like'%" + channel + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
-        list = mdTypeService.findByCondition(condition);
+        cr.andCondition("FLAG_DEL=0");
+        list = mdTypeViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
+
     }
+
+
 }

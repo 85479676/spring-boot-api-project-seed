@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2020/02/26.
+ * Created by CodeGenerator on 2020/03/10.
  */
 public interface LogRaw202002ViewService extends Service<LogRaw202002View> {
 

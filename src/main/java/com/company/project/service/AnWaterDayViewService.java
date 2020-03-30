@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2020/02/22.
+ * Created by CodeGenerator on 2020/03/04.
  */
 public interface AnWaterDayViewService extends Service<AnWaterDayView> {
 

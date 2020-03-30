@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -60,16 +61,17 @@ public class LogSyslogController {
         datimeTo = DateHelper.getDateYYYY_MM_DD_MAX();
         List<LogSyslog> list = null;
         Condition condition = new Condition(AnWaterDayView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (datimeFrom != null) {
-            condition.createCriteria().andCondition("DATIME_SYS BETWEEN'" + datimeFrom + "'").andCondition("'" + datimeTo).andCondition("'").andCondition("FLAG_DEL=0");
+            cr.andCondition("DATIME_SYS BETWEEN'" + datimeFrom + "'").andCondition("'" + datimeTo).andCondition("'");
             condition.orderBy("aiid").desc();
         }
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
             condition.orderBy("aiid").desc();
         }
 
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
         list = logSyslogService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

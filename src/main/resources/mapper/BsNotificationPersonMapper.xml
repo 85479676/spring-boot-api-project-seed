@@ -16,5 +16,6 @@
     <result column="BNS_UNID" jdbcType="VARCHAR" property="bnsUnid" />
     <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
     <result column="UPDATE_DTIME" jdbcType="TIMESTAMP" property="updateDtime" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
   </resultMap>
 </mapper>

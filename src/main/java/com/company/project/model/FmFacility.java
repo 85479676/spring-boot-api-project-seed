@@ -1,14 +1,20 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "FM_FACILITY")
-public class FmFacility  {
+public class FmFacility {
     @Id
     @GeneratedValue(generator = "UUID")//自动生成UUID
     @Column(name = "UNID")
     private String unid;
+
+    @Column(name = "AIID")
+    private Integer aiid;
 
     @Column(name = "DATIME_SYS")
     private Date datimeSys;
@@ -36,6 +42,9 @@ public class FmFacility  {
 
     @Column(name = "ID_TYPE")
     private Short idType;
+
+    @Column(name = "ID_MODEL")
+    private Short idModel;
 
     @Column(name = "UNID_CELL")
     private String unidCell;
@@ -87,6 +96,11 @@ public class FmFacility  {
 
     @Column(name = "BITS")
     private byte[] bits;
+    /**
+     * 资产状态判断值
+     */
+    @Column(name = "STATUS")
+    private Boolean status;
 
     /**
      * 是否被分层图关联
@@ -96,6 +110,7 @@ public class FmFacility  {
 
     @Column(name = "FLAG_DEL")
     private Boolean flagDel;
+
 
     /**
      * @return UNID
@@ -111,6 +126,19 @@ public class FmFacility  {
         this.unid = unid;
     }
 
+    /**
+     * @return AIID
+     */
+    public Integer getAiid() {
+        return aiid;
+    }
+
+    /**
+     * @param aiid
+     */
+    public void setAiid(Integer aiid) {
+        this.aiid = aiid;
+    }
 
     /**
      * @return DATIME_SYS
@@ -226,6 +254,20 @@ public class FmFacility  {
      */
     public void setIdType(Short idType) {
         this.idType = idType;
+    }
+
+    /**
+     * @return ID_MODEL
+     */
+    public Short getIdModel() {
+        return idModel;
+    }
+
+    /**
+     * @param idModel
+     */
+    public void setIdModel(Short idModel) {
+        this.idModel = idModel;
     }
 
     /**
@@ -424,6 +466,20 @@ public class FmFacility  {
      */
     public void setBits(byte[] bits) {
         this.bits = bits;
+    }
+
+    /**
+     * @return STATUS
+     */
+    public Boolean getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status
+     */
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     /**

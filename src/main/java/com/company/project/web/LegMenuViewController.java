@@ -1,16 +1,18 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegMenuView;
-import com.company.project.model.SysMenuView;
 import com.company.project.service.LegMenuViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/menuview")
-public class LegMenuViewController {
+public class LegMenuViewController extends DomainedResource {
     @Resource
     private LegMenuViewService legMenuViewService;
 
@@ -48,15 +50,22 @@ public class LegMenuViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "30") Integer size, @RequestParam(required = false) String name) {
+    public Result list(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "30") Integer size, @RequestParam(required =
+            false) String name, @RequestParam(required = false) String domainUnid, @RequestParam(required = false) String systemMenuType) {
+
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegMenuView> list = null;
-        Condition condition = new Condition(SysMenuView.class);
-
+        Condition condition = new Condition(LegMenuView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        if (systemMenuType != null) {
+            cr.andCondition("SYSTEM_MENU_TYPE='" + systemMenuType + "'");
+        }
+        cr.andCondition("FLAG_DEL=0");
+        cr.andCondition(temp);
         list = legMenuViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

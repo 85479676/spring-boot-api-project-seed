@@ -1,5 +1,6 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegOpenidView;
@@ -8,8 +9,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -18,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/openid")
-public class LegOpenidViewController {
+public class LegOpenidViewController extends DomainedResource {
     @Resource
     private LegOpenidViewService legOpenidViewService;
 
@@ -47,14 +50,23 @@ public class LegOpenidViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "50") Integer size, @RequestParam(required = false) String nameLogin) {
+    public Result list(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false) String domainUnid, @RequestParam(defaultValue = "50") Integer size, @RequestParam(required =
+            false) String nameLogin, @RequestParam(required = false) String systemMenUnid) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegOpenidView> list = null;
+
         Condition condition = new Condition(LegOpenidView.class);
-        if (nameLogin != null ) {
-            condition.createCriteria().andCondition("NAME_LOGIN like'%" + nameLogin + "%'").andCondition("FLAG_DEL=0");
+        Example.Criteria cr = condition.createCriteria();
+        cr.andCondition(temp);
+        if (nameLogin != null) {
+            cr.andCondition("NAME_LOGIN like'%" + nameLogin + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        if (systemMenUnid != null) {
+            cr.andCondition("SYSTEM_MENU_UNID='" + systemMenUnid + "'");
+        }
+        cr.andCondition("FLAG_DEL=0");
+
         list = legOpenidViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

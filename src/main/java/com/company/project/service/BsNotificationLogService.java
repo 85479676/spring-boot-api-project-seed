@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2020/02/28.
+ * Created by CodeGenerator on 2020/03/16.
  */
 public interface BsNotificationLogService extends Service<BsNotificationLog> {
 

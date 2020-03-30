@@ -29,6 +29,7 @@
     <result column="FLAG_AVA" jdbcType="BIT" property="flagAva" />
     <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
     <result column="FLAG_LOCK" jdbcType="BIT" property="flagLock" />
+    <result column="SYSTEM_MENU_UNID" jdbcType="VARCHAR" property="systemMenUnid" />
     <result column="USER_GROUP_UNID" jdbcType="VARCHAR" property="userGroupUnid" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
     <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />

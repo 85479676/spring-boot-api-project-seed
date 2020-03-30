@@ -15,5 +15,7 @@
     <result column="SYSTEM_DATIME" jdbcType="TIMESTAMP" property="systemDatime" />
     <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
   </resultMap>
 </mapper>

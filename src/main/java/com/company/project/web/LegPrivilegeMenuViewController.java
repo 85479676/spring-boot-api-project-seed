@@ -1,5 +1,6 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegPrivilegeMenuView;
@@ -9,8 +10,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/privilegemenu")
-public class LegPrivilegeMenuViewController {
+public class LegPrivilegeMenuViewController extends DomainedResource {
     @Resource
     private LegPrivilegeMenuViewService legPrivilegeMenuViewService;
 
@@ -48,20 +51,23 @@ public class LegPrivilegeMenuViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "30") Integer size,
+    public Result list(HttpServletRequest request, @RequestParam(defaultValue = "0") Integer page, @RequestParam(required = false) String domainUnid, @RequestParam(defaultValue
+            = "30") Integer size,
                        @RequestParam(required = false) String privilege, @RequestParam(required = false) String privilegeName,
                        @RequestParam(required = false) String menuName) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegPrivilegeMenuView> list = null;
         Condition condition = new Condition(LegPrivilegeView.class);
-
+        Example.Criteria cr = condition.createCriteria();
         if (privilege != null) {
-            condition.createCriteria().andCondition("PRIVILEGE_UNID='" + privilege + "'");
+            cr.andCondition("PRIVILEGE_UNID='" + privilege + "'");
         }
 
 //        if (privilege != null) {
 //            condition.createCriteria().andCondition("find_in_set(PRIVILEGE_UNID,'").andCondition(privilege).andCondition("')");
 //        }
+        cr.andCondition(temp);
         list = legPrivilegeMenuViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

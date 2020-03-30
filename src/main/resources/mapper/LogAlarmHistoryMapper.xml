@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LogAlarmHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LogAlarmHistory">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="facility_unid" jdbcType="VARCHAR" property="facilityUnid" />
+    <result column="start" jdbcType="TIMESTAMP" property="start" />
+    <result column="end" jdbcType="TIMESTAMP" property="end" />
+    <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="event_comment" jdbcType="VARCHAR" property="eventComment" />
+    <result column="id_host" jdbcType="VARCHAR" property="idHost" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="status" jdbcType="BIT" property="status" />
+  </resultMap>
+    <select id="selectCountOne" resultType="com.company.project.model.LogAlarmHistory">
+        SELECT DISTINCT
+        IFNULL(a.alias, 0) AS alias,
+        b.al as unid ,
+        DATE_FORMAT( CONCAT(
+        DATE(a.start),
+        ' ',
+        FLOOR(HOUR (a.start) / 2) * 2
+        ),
+        '%H:%00:00'
+        ) AS start
+        FROM
+        `LOG_ALARM_HISTORY` AS a LEFT JOIN (SELECT alias, COUNT(alias) AS al FROM `terata`.`LOG_ALARM_HISTORY` WHERE FACILITY_UNID=#{unid} AND start>=#{datimeFrom}AND
+        start&lt;=#{datimeTo} GROUP BY alias ) b ON a.`alias` = b.alias ORDER BY start ASC
+    </select>
+
+
+
+</mapper>

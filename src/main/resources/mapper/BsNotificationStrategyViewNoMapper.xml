@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.BsNotificationStrategyViewNoMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.BsNotificationStrategyViewNo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="UNID" jdbcType="VARCHAR" property="unid"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime"/>
+        <result column="UPDATE_DTIME" jdbcType="TIMESTAMP" property="updateDtime"/>
+        <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid"/>
+        <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
+        <result column="IS_SAS" jdbcType="BIT" property="isSas"/>
+        <result column="IS_EMAIL" jdbcType="BIT" property="isEmail"/>
+        <result column="IS_VOICE" jdbcType="BIT" property="isVoice"/>
+        <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx"/>
+        <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx"/>
+    </resultMap>
+</mapper>

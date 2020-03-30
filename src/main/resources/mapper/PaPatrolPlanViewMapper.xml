@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PaPatrolPlanViewMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.PaPatrolPlanView">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="unid" jdbcType="VARCHAR" property="unid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="domain_unid" jdbcType="VARCHAR" property="domainUnid"/>
+        <result column="patrol_time_item_unid" jdbcType="VARCHAR" property="patrolTimeItemUnid"/>
+        <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime"/>
+        <result column="update_dtime" jdbcType="TIMESTAMP" property="updateDtime"/>
+        <result column="flag_del" jdbcType="BIT" property="flagDel"/>
+        <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName"/>
+        <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx"/>
+        <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx"/>
+        <result column="pointCount" jdbcType="INTEGER" property="pointcount"/>
+        <result column="timeCount" jdbcType="INTEGER" property="timecount"/>
+
+    </resultMap>
+</mapper>

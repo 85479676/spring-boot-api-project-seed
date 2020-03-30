@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2020/02/25.
+ * Created by CodeGenerator on 2020/03/04.
  */
 public interface LegUserGroupDomainMapViewService extends Service<LegUserGroupDomainMapView> {
 

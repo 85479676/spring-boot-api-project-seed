@@ -16,6 +16,7 @@
     <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
     <result column="UNID_VENDOR" jdbcType="CHAR" property="unidVendor" />
     <result column="UNID_PROTO" jdbcType="CHAR" property="unidProto" />
+    <result column="NAME_PROTO" jdbcType="VARCHAR" property="nameProto"/>
     <result column="TAG" jdbcType="CHAR" property="tag" />
     <result column="FLAG_PRIV" jdbcType="BIT" property="flagPriv" />
     <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />

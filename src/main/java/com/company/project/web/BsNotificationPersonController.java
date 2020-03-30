@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2020/02/28.
-*/
+ * Created by CodeGenerator on 2020/02/28.
+ */
 @RestController
 @RequestMapping("/notificationperson")
 public class BsNotificationPersonController {
@@ -28,7 +28,9 @@ public class BsNotificationPersonController {
 
     @DeleteMapping("/{unid}")
     public Result delete(@PathVariable String unid) {
-        bsNotificationPersonService.deleteById(unid);
+        BsNotificationPerson bsNotificationPerson = bsNotificationPersonService.findById(unid);
+        bsNotificationPerson.setFlagDel(true);
+        bsNotificationPersonService.update(bsNotificationPerson);
         return ResultGenerator.genSuccessResult();
     }
 

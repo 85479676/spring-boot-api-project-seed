@@ -3,14 +3,13 @@ package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.AnWaterDayView;
-import com.company.project.model.LogTupleSensorView;
 import com.company.project.model.LogUlog;
 import com.company.project.service.LogUlogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.runtime.Log;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -57,11 +56,12 @@ public class LogUlogController {
         PageHelper.startPage(page, size);
         List<LogUlog> list = null;
         Condition condition = new Condition(AnWaterDayView.class);
-        if (datimeFrom != null) {
-            condition.createCriteria().andCondition("DATIME_SYS BETWEEN'" + datimeFrom + "'").andCondition("'" + datimeTo + "'").andCondition("FLAG_DEL=0");
+        Example.Criteria cr = condition.createCriteria();
+        if (datimeFrom != null && datimeFrom != "" && datimeTo != null && datimeTo != "") {
+            cr.andCondition("DATIME_SYS BETWEEN'" + datimeFrom + "'").andCondition("'" + datimeTo + "'");
             condition.orderBy("aiid").desc();
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
         list = logUlogService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

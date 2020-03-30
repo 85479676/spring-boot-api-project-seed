@@ -1,16 +1,18 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.LegUserGroupDomainMapView;
-import com.company.project.model.LegUserGroupPrivilegeMap;
 import com.company.project.service.LegUserGroupDomainMapViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/userdomainmapview")
-public class LegUserGroupDomainMapViewController {
+public class LegUserGroupDomainMapViewController extends DomainedResource {
     @Resource
     private LegUserGroupDomainMapViewService legUserGroupDomainMapViewService;
 
@@ -48,13 +50,16 @@ public class LegUserGroupDomainMapViewController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String unid) {
+    public Result list(HttpServletRequest request, @RequestParam(required = false) String domainUnid, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, @RequestParam(required = false) String unid) {
+        String temp = this.tokenValue(request, domainUnid);
         PageHelper.startPage(page, size);
         List<LegUserGroupDomainMapView> list = null;
         Condition condition = new Condition(LegUserGroupDomainMapView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (unid != null) {
-            condition.createCriteria().andCondition("USER_GROUP_UNID='" + unid + "'");
+            cr.andCondition("USER_GROUP_UNID='" + unid + "'");
         }
+        cr.andCondition(temp);
         list = legUserGroupDomainMapViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

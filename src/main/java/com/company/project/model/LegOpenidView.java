@@ -1,7 +1,9 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "LEG_OPENID_VIEW")
 public class LegOpenidView {
@@ -31,7 +33,8 @@ public class LegOpenidView {
 
     @Column(name = "CELLPHONE")
     private String cellphone;
-
+    @Column(name = "SYSTEM_MENU_UNID")
+    private String systemMenUnid;
     @Column(name = "EMAIL")
     private String email;
 
@@ -146,6 +149,20 @@ public class LegOpenidView {
      */
     public void setDomainUnid(String domainUnid) {
         this.domainUnid = domainUnid;
+    }
+
+    /**
+     * @return DOMAIN_UNID
+     */
+    public String getSystemMenUnid() {
+        return systemMenUnid;
+    }
+
+    /**
+     * @param systemMenUnid
+     */
+    public void setSystemMenUnid(String systemMenUnid) {
+        this.systemMenUnid = systemMenUnid;
     }
 
     /**

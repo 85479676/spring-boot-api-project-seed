@@ -46,6 +46,8 @@ public class MdModelView {
 
     @Column(name = "UNID_PROTO")
     private String unidProto;
+    @Column(name = "NAME_PROTO")
+    private String nameProto;
 
     @Column(name = "TAG")
     private String tag;
@@ -59,6 +61,13 @@ public class MdModelView {
     @Column(name = "DOMAIN_NAME")
     private String domainName;
 
+    public String getNameProto() {
+        return nameProto;
+    }
+
+    public void setNameProto(String nameProto) {
+        this.nameProto = nameProto;
+    }
 
     /**
      * 获取唯一编号

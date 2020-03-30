@@ -13,6 +13,7 @@
     <result column="STATUS" jdbcType="VARCHAR" property="status" />
     <result column="TYPE" jdbcType="INTEGER" property="type" />
     <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
     <result column="FACILITY_NAME" jdbcType="VARCHAR" property="facilityName" />
   </resultMap>
 </mapper>

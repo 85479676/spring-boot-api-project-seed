@@ -1,7 +1,9 @@
 package com.company.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "BS_NOTIFICATION_LOG_VIEW")
 public class BsNotificationLogView {
@@ -47,6 +49,9 @@ public class BsNotificationLogView {
      */
     @Column(name = "SYSTEM_DTIME")
     private Date systemDtime;
+
+    @Column(name = "FLAG_DEL")
+    private Boolean flagDel;
 
     @Column(name = "FACILITY_NAME")
     private String facilityName;
@@ -185,6 +190,20 @@ public class BsNotificationLogView {
      */
     public void setSystemDtime(Date systemDtime) {
         this.systemDtime = systemDtime;
+    }
+
+    /**
+     * @return FLAG_DEL
+     */
+    public Boolean getFlagDel() {
+        return flagDel;
+    }
+
+    /**
+     * @param flagDel
+     */
+    public void setFlagDel(Boolean flagDel) {
+        this.flagDel = flagDel;
     }
 
     /**

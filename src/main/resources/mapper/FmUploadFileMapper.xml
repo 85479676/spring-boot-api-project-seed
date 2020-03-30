@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmUploadFileMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.FmUploadFile">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="BIGINT" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
+    <result column="OPEN_ID" jdbcType="CHAR" property="openId" />
+    <result column="UNID_ENTITY" jdbcType="CHAR" property="unidEntity" />
+    <result column="MD5" jdbcType="VARCHAR" property="md5" />
+    <result column="LON" jdbcType="DECIMAL" property="lon" />
+    <result column="LAT" jdbcType="DECIMAL" property="lat" />
+    <result column="TAG" jdbcType="VARCHAR" property="tag" />
+    <result column="PATH" jdbcType="VARCHAR" property="path" />
+    <result column="URI_1X" jdbcType="VARCHAR" property="uri1x" />
+    <result column="URI_2X" jdbcType="VARCHAR" property="uri2x" />
+    <result column="URI_3X" jdbcType="VARCHAR" property="uri3x" />
+    <result column="URI_4X" jdbcType="VARCHAR" property="uri4x" />
+    <result column="URI" jdbcType="VARCHAR" property="uri" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

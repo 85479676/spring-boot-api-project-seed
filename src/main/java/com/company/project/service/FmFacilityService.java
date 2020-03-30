@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2020/02/18.
+ * Created by CodeGenerator on 2020/03/05.
  */
 public interface FmFacilityService extends Service<FmFacility> {
 

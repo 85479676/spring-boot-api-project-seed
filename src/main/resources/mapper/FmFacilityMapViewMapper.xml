@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmFacilityMapViewMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.FmFacilityMapView">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="AIID" jdbcType="INTEGER" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="X_MAX" jdbcType="INTEGER" property="xMax" />
+    <result column="Y_MAX" jdbcType="INTEGER" property="yMax" />
+    <result column="ZOOM" jdbcType="INTEGER" property="zoom" />
+    <result column="COUNT_ALERT" jdbcType="INTEGER" property="countAlert" />
+    <result column="COUNT_FACILITY" jdbcType="INTEGER" property="countFacility" />
+    <result column="FLAG_PRMY" jdbcType="BIT" property="flagPrmy" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="URI" jdbcType="VARCHAR" property="uri" />
+    <result column="TAG" jdbcType="VARCHAR" property="tag" />
+    <result column="FILE_DATIME_SYS" jdbcType="TIMESTAMP" property="fileDatimeSys" />
+    <result column="FILE_UNID" jdbcType="CHAR" property="fileUnid" />
+    <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+  </resultMap>
+</mapper>

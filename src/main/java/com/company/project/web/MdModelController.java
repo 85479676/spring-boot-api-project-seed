@@ -3,12 +3,12 @@ package com.company.project.web;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.MdModel;
-import com.company.project.model.MdType;
 import com.company.project.service.MdModelService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,7 +25,7 @@ public class MdModelController {
     private MdModelService mdModelService;
 
     @PostMapping("/add")
-    public Result add( MdModel mdModel) {
+    public Result add(MdModel mdModel) {
         mdModelService.save(mdModel);
         return ResultGenerator.genSuccessResult();
     }
@@ -56,8 +56,8 @@ public class MdModelController {
         PageHelper.startPage(page, size);
         List<MdModel> list = null;
         Condition condition = new Condition(MdModel.class);
-
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        Example.Criteria cr = condition.createCriteria();
+        cr.andCondition("FLAG_DEL=0");
         list = mdModelService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);

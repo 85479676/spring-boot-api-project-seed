@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.PaTaskMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.PaTask">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="task_date" jdbcType="DATE" property="taskDate" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="task_time_start" jdbcType="TIME" property="taskTimeStart" />
+    <result column="task_time_end" jdbcType="TIME" property="taskTimeEnd" />
+    <result column="domain_unid" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

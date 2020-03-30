@@ -15,6 +15,7 @@
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="ID_SYSTEM" jdbcType="SMALLINT" property="idSystem" />
     <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="ID_MODEL" jdbcType="SMALLINT" property="idModel" />
     <result column="UNID_CELL" jdbcType="CHAR" property="unidCell" />
     <result column="UNID_GROUP" jdbcType="CHAR" property="unidGroup" />
     <result column="UNID_MOUNT" jdbcType="CHAR" property="unidMount" />
@@ -28,6 +29,7 @@
     <result column="DATIME_LAST_MTN" jdbcType="TIMESTAMP" property="datimeLastMtn" />
     <result column="COUNT_EVENT" jdbcType="INTEGER" property="countEvent" />
     <result column="BITS" jdbcType="BIT" property="bits" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
     <result column="FLAG_AVA" jdbcType="BIT" property="flagAva" />
     <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
   </resultMap>

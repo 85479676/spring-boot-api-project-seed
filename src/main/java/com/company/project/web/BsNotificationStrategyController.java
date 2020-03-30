@@ -12,8 +12,9 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2020/02/28.
-*/
+ * 通知策略表
+ * Created by CodeGenerator on 2020/02/28.
+ */
 @RestController
 @RequestMapping("/notificationstrategy")
 public class BsNotificationStrategyController {
@@ -28,7 +29,9 @@ public class BsNotificationStrategyController {
 
     @DeleteMapping("/{unid}")
     public Result delete(@PathVariable String unid) {
-        bsNotificationStrategyService.deleteById(unid);
+        BsNotificationStrategy bsNotificationStrategy = bsNotificationStrategyService.findById(unid);
+        bsNotificationStrategy.setFlagDel(true);
+        bsNotificationStrategyService.update(bsNotificationStrategy);
         return ResultGenerator.genSuccessResult();
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
 * Created by CodeGenerator on 2020/02/27.
 */
 @RestController
-@RequestMapping("/oau/access/token")
+@RequestMapping("/oauaccesstoken")
 public class OauAccessTokenController {
     @Resource
     private OauAccessTokenService oauAccessTokenService;

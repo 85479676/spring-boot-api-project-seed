@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.MdGridMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.MdGrid">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="AIID" jdbcType="BIGINT" property="aiid" />
+    <result column="UNID" jdbcType="CHAR" property="unid" />
+    <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
+    <result column="OPEN_ID" jdbcType="CHAR" property="openId" />
+    <result column="ID_TYPE" jdbcType="SMALLINT" property="idType" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="K" jdbcType="VARCHAR" property="page_id" />
+    <result column="PATH" jdbcType="VARCHAR" property="path" />
+    <result column="FLAG_PRIV" jdbcType="BIT" property="flagPriv" />
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="GRID_COLUMN" jdbcType="LONGVARCHAR" property="gridColumn" />
+  </resultMap>
+
+  <select id="selectGridKey" resultMap="BaseResultMap">
+    SELECT   `UNID`, `OPEN_ID`, `ID_TYPE`, `NAME`, `K` , `PATH`, `GRID_COLUMN`, `FLAG_PRIV`, `FLAG_DEL` FROM  `terata`.`MD_GRID`  WHERE
+    (UNID=#{unid} OR K=#{unid})
+  </select>
+</mapper>

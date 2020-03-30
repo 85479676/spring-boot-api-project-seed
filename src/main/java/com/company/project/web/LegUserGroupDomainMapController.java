@@ -2,14 +2,13 @@ package com.company.project.web;
 
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.model.LegPrivilegeMenuMap;
 import com.company.project.model.LegUserGroupDomainMap;
-import com.company.project.model.LegUserGroupView;
 import com.company.project.service.LegUserGroupDomainMapService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -61,8 +60,9 @@ public class LegUserGroupDomainMapController {
         PageHelper.startPage(page, size);
         List<LegUserGroupDomainMap> list = null;
         Condition condition = new Condition(LegUserGroupDomainMap.class);
+        Example.Criteria cr = condition.createCriteria();
         if (unid != null) {
-            condition.createCriteria().andCondition("USER_GROUP_UNID='" + unid + "'");
+            cr.andCondition("USER_GROUP_UNID='" + unid + "'");
         }
         list = legUserGroupDomainMapService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);

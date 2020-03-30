@@ -26,6 +26,24 @@
         <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
     </resultMap>
     <select id="selectGetName" resultType="com.company.project.model.OauDomain" resultMap="BaseResultMap">
-        SELECT `UNID`,  `NAME`, `ID_TYPE`,`FLAG_DEL` FROM OAU_DOMAIN WHERE  NAME=#{name}
+        SELECT `UNID`,  `NAME`, LEFT_INX,RIGHT_INX,`ID_TYPE`,`FLAG_DEL` FROM OAU_DOMAIN WHERE  NAME=#{name}
     </select>
+
+    <insert id="addDomain" statementType="CALLABLE" parameterType="com.company.project.model.OauDomain">
+         {call AddSubNode(
+		#{unidSuper,mode=IN},#{unid,mode=IN,jdbcType=INTEGER},#{name,mode=IN})
+		}
+
+    </insert>
+
+    <delete id="deleteDomain" statementType="CALLABLE">
+        <![CDATA[
+                    call DelNode(#{node_id,mode=IN,jdbcType=VARCHAR});
+        ]]>
+    </delete>
+    <update id="updateDomain" parameterType="com.company.project.model.OauDomain" statementType="CALLABLE">
+		{call UpdateNode(#{unidSuper,mode=IN,jdbcType=VARCHAR},#{unid,mode=IN,jdbcType=VARCHAR},#{name,mode=IN,jdbcType=VARCHAR})}
+	</update>
+
+
 </mapper>

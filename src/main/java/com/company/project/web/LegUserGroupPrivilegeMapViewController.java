@@ -1,14 +1,15 @@
 package com.company.project.web;
 
+import com.company.project.configurer.DomainedResource;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
-import com.company.project.model.LegUserGroupPrivilegeMap;
 import com.company.project.model.LegUserGroupPrivilegeMapView;
 import com.company.project.service.LegUserGroupPrivilegeMapViewService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/groupprivilegemapview")
-public class LegUserGroupPrivilegeMapViewController {
+public class LegUserGroupPrivilegeMapViewController extends DomainedResource {
     @Resource
     private LegUserGroupPrivilegeMapViewService legUserGroupPrivilegeMapViewService;
 
@@ -52,8 +53,9 @@ public class LegUserGroupPrivilegeMapViewController {
         PageHelper.startPage(page, size);
         List<LegUserGroupPrivilegeMapView> list = null;
         Condition condition = new Condition(LegUserGroupPrivilegeMapView.class);
+        Example.Criteria cr = condition.createCriteria();
         if (unid != null) {
-            condition.createCriteria().andCondition("USER_GROUP_USER='" + unid + "'");
+            cr.andCondition("USER_GROUP_USER='" + unid + "'");
         }
         list = legUserGroupPrivilegeMapViewService.findByCondition(condition);
         PageInfo pageInfo = new PageInfo(list);

@@ -1,7 +1,11 @@
 package com.company.project.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "AN_ELECTRIC_DAY_VIEW")
 public class AnElectricDayView {
@@ -15,8 +19,11 @@ public class AnElectricDayView {
     /**
      * 日期
      */
-    @Column(name = "NAME")
-    private String name;
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @Column(name = "NAME_DATE")
+    private Date nameDate;
+    @Column(name = "ALARM_COUNT")
+    private Integer alarmCount;
 
     /**
      * 电流最大值
@@ -75,6 +82,12 @@ public class AnElectricDayView {
     @Column(name = "DOMAIN_UNID")
     private String domainUnid;
 
+    @Column(name = "LEFT_INX")
+    private Long leftInx;
+
+    @Column(name = "RIGHT_INX")
+    private Long rightInx;
+
     @Column(name = "SYSTEM_DATIME")
     private Date systemDatime;
 
@@ -86,6 +99,14 @@ public class AnElectricDayView {
 
     @Column(name = "DOMAIN_NAME")
     private String domainName;
+
+    public Integer getAlarmCount() {
+        return alarmCount;
+    }
+
+    public void setAlarmCount(Integer alarmCount) {
+        this.alarmCount = alarmCount;
+    }
 
     /**
      * 获取设备唯一标识
@@ -105,22 +126,12 @@ public class AnElectricDayView {
         this.unid = unid;
     }
 
-    /**
-     * 获取日期
-     *
-     * @return NAME - 日期
-     */
-    public String getName() {
-        return name;
+    public Date getNameDate() {
+        return nameDate;
     }
 
-    /**
-     * 设置日期
-     *
-     * @param name 日期
-     */
-    public void setName(String name) {
-        this.name = name;
+    public void setNameDate(Date nameDate) {
+        this.nameDate = nameDate;
     }
 
     /**
@@ -357,6 +368,34 @@ public class AnElectricDayView {
      */
     public void setDomainUnid(String domainUnid) {
         this.domainUnid = domainUnid;
+    }
+
+    /**
+     * @return LEFT_INX
+     */
+    public Long getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Long leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Long getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Long rightInx) {
+        this.rightInx = rightInx;
     }
 
     /**

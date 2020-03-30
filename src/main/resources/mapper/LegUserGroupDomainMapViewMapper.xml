@@ -10,5 +10,7 @@
     <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
     <result column="GROUP_NAME" jdbcType="VARCHAR" property="groupName" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
+    <result column="LEFT_INX" jdbcType="BIGINT" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="BIGINT" property="rightInx" />
   </resultMap>
 </mapper>

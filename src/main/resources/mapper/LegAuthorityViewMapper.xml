@@ -12,6 +12,8 @@
     <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys" />
     <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod" />
     <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
+    <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx" />
+    <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx" />
     <result column="DOMAIN_NAME" jdbcType="VARCHAR" property="domainName" />
   </resultMap>
 </mapper>

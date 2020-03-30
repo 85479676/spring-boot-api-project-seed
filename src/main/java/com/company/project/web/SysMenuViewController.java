@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -53,11 +54,12 @@ public class SysMenuViewController {
         PageHelper.startPage(page, size);
         List<SysMenuView> list = null;
         Condition condition = new Condition(SysMenuView.class);
+        Example.Criteria cr = condition.createCriteria();
 
         if (name != null) {
-            condition.createCriteria().andCondition("NAME like'%" + name + "%'").andCondition("FLAG_DEL=0");
+            cr.andCondition("NAME like'%" + name + "%'");
         }
-        condition.createCriteria().andCondition("FLAG_DEL=0");
+        cr.andCondition("FLAG_DEL=0");
         list = sysMenuViewService.findByCondition(condition);
 
         PageInfo pageInfo = new PageInfo(list);

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.FmTodoPatrolMapper">
+    <resultMap id="BaseResultMap" type="com.company.project.model.FmTodoPatrol">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="AIID" jdbcType="INTEGER" property="aiid"/>
+        <result column="UNID" jdbcType="CHAR" property="unid"/>
+        <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys"/>
+        <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod"/>
+        <result column="DOMAIN_UNID" jdbcType="CHAR" property="domainUnid"/>
+        <result column="LEFT_INX" jdbcType="INTEGER" property="leftInx"/>
+        <result column="RIGHT_INX" jdbcType="INTEGER" property="rightInx"/>
+        <result column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="ID_FLOW" jdbcType="TINYINT" property="idFlow"/>
+        <result column="ID_STATUS" jdbcType="SMALLINT" property="idStatus"/>
+        <result column="ID_PRIORITY" jdbcType="TINYINT" property="idPriority"/>
+        <result column="OPEN_ID_REPORTER" jdbcType="CHAR" property="openIdReporter"/>
+        <result column="OPEN_ID_CREATOR" jdbcType="CHAR" property="openIdCreator"/>
+        <result column="OPEN_ID_ASSIGNEE" jdbcType="CHAR" property="openIdAssignee"/>
+        <result column="UNID_BUSINESS_UNIT" jdbcType="CHAR" property="unidBusinessUnit"/>
+        <result column="UNID_CHECKPOINT" jdbcType="CHAR" property="unidCheckpoint"/>
+        <result column="DATIME_HIT" jdbcType="TIMESTAMP" property="datimeHit"/>
+        <result column="DATIME_BEGIN" jdbcType="TIMESTAMP" property="datimeBegin"/>
+        <result column="DATIME_DUE" jdbcType="TIMESTAMP" property="datimeDue"/>
+        <result column="FLAG_DONE" jdbcType="BIT" property="flagDone"/>
+        <result column="FLAG_EXP" jdbcType="BIT" property="flagExp"/>
+        <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
+    </resultMap>
+    <resultMap id="BaseResultMab" type="com.company.project.model.FmTodoPatrols">
+        <result column="AIID" jdbcType="INTEGER" property="aiid"/>
+        <result column="DATIME_SYS" jdbcType="TIMESTAMP" property="datimeSys"/>
+        <result column="DATIME_MOD" jdbcType="TIMESTAMP" property="datimeMod"/>
+        <result column="FLAG_DONE" jdbcType="BIT" property="flagDone"/>
+        <result column="FLAG_DEL" jdbcType="BIT" property="flagDel"/>
+    </resultMap>
+    <select id="getTodoPatrol" resultMap="BaseResultMab">
+        SELECT FLAG_DONE,COUNT(a.AIID) AS AIID FROM FM_TODO_PATROL a
+         INNER JOIN `OAU_DOMAIN` d
+        ON (
+        a.`DOMAIN_UNID` = d.`UNID`  AND  d.`LEFT_INX` >=
+        (SELECT       e.LEFT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID = #{domainUnid})
+        AND d.`RIGHT_INX` &lt;=  (SELECT
+        e.RIGHT_INX
+        FROM
+        terata.OAU_DOMAIN e
+        WHERE e.UNID = #{domainUnid})
+        )
+        WHERE a.FLAG_DEL=0  AND a.DATIME_SYS>=#{datimeFrom} AND a.DATIME_SYS &lt;=#{datimeTo} GROUP BY
+       FLAG_DONE
+    </select>
+</mapper>

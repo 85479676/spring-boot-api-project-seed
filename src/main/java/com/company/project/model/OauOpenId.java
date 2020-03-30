@@ -66,6 +66,8 @@ public class OauOpenId {
 
     @Column(name = "IP6")
     private String ip6;
+    @Column(name = "SYSTEM_MENU_UNID")
+    private String systemMenUnid;
 
     @Column(name = "IP4")
     private String ip4;
@@ -84,6 +86,21 @@ public class OauOpenId {
 
     @Column(name = "FLAG_DEL")
     private Boolean flagDel;
+
+    /**
+     * @return SYSTEM_MENU_UNID
+     */
+    public String getSystemMenUnid() {
+        return systemMenUnid;
+    }
+
+    /**
+     * @param systemMenUnid
+     */
+    public void setSystemMenUnid(String systemMenUnid) {
+        this.systemMenUnid = systemMenUnid;
+    }
+
 
     /**
      * @return UNID

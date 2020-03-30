@@ -5,13 +5,17 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="UNID" jdbcType="VARCHAR" property="unid" />
-    <result column="NAME" jdbcType="VARCHAR" property="name" />
-    <result column="INFORME" jdbcType="VARCHAR" property="informe" />
-    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
-    <result column="FM_FACILITY_UNID" jdbcType="VARCHAR" property="fmFacilityUnid" />
-    <result column="STATUS" jdbcType="VARCHAR" property="status" />
-    <result column="TYPE" jdbcType="INTEGER" property="type" />
-    <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="informe" jdbcType="VARCHAR" property="informe" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="fm_facility_unid" jdbcType="VARCHAR" property="fmFacilityUnid" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="system_dtime" jdbcType="TIMESTAMP" property="systemDtime" />
+    <result column="update_dtime" jdbcType="TIMESTAMP" property="updateDtime" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
   </resultMap>
 </mapper>

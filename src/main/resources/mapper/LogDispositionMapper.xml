@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.LogDispositionMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.LogDisposition">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="reason" jdbcType="INTEGER" property="reason" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="user_unid" jdbcType="VARCHAR" property="userUnid" />
+    <result column="datime_sys" jdbcType="TIMESTAMP" property="datimeSys" />
+    <result column="flag_del" jdbcType="BIT" property="flagDel" />
+  </resultMap>
+</mapper>

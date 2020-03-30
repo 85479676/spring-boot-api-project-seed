@@ -10,5 +10,9 @@
     <result column="SYSTEM_DTIME" jdbcType="TIMESTAMP" property="systemDtime" />
     <result column="UPDATE_DTIME" jdbcType="TIMESTAMP" property="updateDtime" />
     <result column="DOMAIN_UNID" jdbcType="VARCHAR" property="domainUnid" />
+    <result column="IS_SAS" jdbcType="BIT" property="isSas"/>
+    <result column="IS_EMAIL" jdbcType="BIT" property="isEmail"/>
+    <result column="IS_VOICE" jdbcType="BIT" property="isVoice"/>
+    <result column="FLAG_DEL" jdbcType="BIT" property="flagDel" />
   </resultMap>
 </mapper>

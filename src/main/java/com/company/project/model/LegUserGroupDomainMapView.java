@@ -23,6 +23,12 @@ public class LegUserGroupDomainMapView {
     @Column(name = "DOMAIN_NAME")
     private String domainName;
 
+    @Column(name = "LEFT_INX")
+    private Long leftInx;
+
+    @Column(name = "RIGHT_INX")
+    private Long rightInx;
+
     /**
      * @return USER_GROUP_UNID
      */
@@ -95,5 +101,33 @@ public class LegUserGroupDomainMapView {
      */
     public void setDomainName(String domainName) {
         this.domainName = domainName;
+    }
+
+    /**
+     * @return LEFT_INX
+     */
+    public Long getLeftInx() {
+        return leftInx;
+    }
+
+    /**
+     * @param leftInx
+     */
+    public void setLeftInx(Long leftInx) {
+        this.leftInx = leftInx;
+    }
+
+    /**
+     * @return RIGHT_INX
+     */
+    public Long getRightInx() {
+        return rightInx;
+    }
+
+    /**
+     * @param rightInx
+     */
+    public void setRightInx(Long rightInx) {
+        this.rightInx = rightInx;
     }
 }
